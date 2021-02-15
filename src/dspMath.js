@@ -1,5 +1,5 @@
-const materials = require('./materials.json')
-const factories = require('./factories.json')
+const materials = require('./data/materials.json')
+const factories = require('./data/factories.json')
 
 
 /**
@@ -9,8 +9,7 @@ const factories = require('./factories.json')
  * @param {Array} chain production chain array
  * @param {Integer} depth
  */
-function getProductionChain(material, qty, chain, depth) {
-  console.log(material, depth)
+function computeProductionChain(material, qty, chain, depth) {
   chain = chain ? chain : []
   depth = depth ? depth + 1 : 1
   qty = qty ? qty : 1
@@ -30,7 +29,7 @@ function getProductionChain(material, qty, chain, depth) {
       var neededMaterial = recipe.materials[i][1]
       var neededQuantity = recipe.materials[i][0] * qty
   
-      getProductionChain(neededMaterial, neededQuantity, chain, depth)
+      computeProductionChain(neededMaterial, neededQuantity, chain, depth)
     }
   }
 
@@ -107,8 +106,16 @@ function addNeededFactories (productionChain) {
   return productionChain
 }
 
-var chain = getProductionChain('conveyor mkI', 3)
-var mergedChain = mergeProductionChain(chain)
-var productionChain = addNeededFactories(mergedChain)
-console.log('MERGED')
-console.dir(productionChain, { depth: null })
+
+function getProductionChain(material, qty){
+  var chain = computeProductionChain(material, qty)
+  var mergedChain = mergeProductionChain(chain)
+  var productionChain = addNeededFactories(mergedChain)
+
+  console.log("return chainn", productionChain)
+  return productionChain
+}
+
+export default {
+  getProductionChain
+}
