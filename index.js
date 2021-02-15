@@ -42,7 +42,7 @@ function getProductionChain(material, qty, chain, depth) {
  * @param {String} material 
  */
 function getMaterialDetails(materialName) {
-  material = materials.find(function (a) {
+  var material = materials.find(function (a) {
     if (a.name === materialName) {
       return true
     }
@@ -57,7 +57,7 @@ function getMaterialDetails(materialName) {
 function mergeProductionChain(chain) {
   var newChain = []
   for(var i=0; i<chain.length; i++) {
-    var material = chain[i];
+    var material = chain[i]
     var mergedMaterial = newChain.find(function(a){
       if (a.name === material.name) {
         return true
@@ -86,7 +86,7 @@ function addNeededFactories (productionChain) {
   for(var i=0; i<productionChain.length; i++) {
     var material = productionChain[i]
     
-    var factory;
+    var factory
     if(material.recipes){
       var recipe = material.recipes[0]
       factory = factories.find(function(a){
