@@ -1,0 +1,16 @@
+[
+  {
+    "name" : "mining machine",
+    "type" : "mining"
+  },
+  {
+    "name" : "smelter",
+    "type" : "smelter",
+    "ratio": 1
+  },
+  {
+    "name" : "assembler mkI",
+    "type" : "assembler",
+    "ratio": 0.75
+  }
+]

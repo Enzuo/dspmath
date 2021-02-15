@@ -1,0 +1,65 @@
+[
+  {
+    "name": "iron ore",
+    "time": 2,
+    "desc": "30 ore per minute for one mineral"
+  },
+  {
+    "name": "copper ore",
+    "time": 2,
+    "desc": "30 ore per minute for one mineral covered"
+  },
+
+  {
+    "name": "iron ingot",
+    "time": 1,
+    "recipes" : [
+      { "materials" : [[1, "iron ore"]], "factory" : ["smelter"] }
+    ]
+  },
+  {
+    "name": "copper ingot",
+    "time": 1,
+    "recipes" : [
+      { "materials" : [[1, "copper ore"]], "factory" : ["smelter"] }
+    ]
+  },
+
+  {
+    "name": "magnet",
+    "time": 1.5,
+    "recipes" : [
+      { "materials" : [[1, "iron ore"]], "factory" : ["smelter"] }
+    ]
+  },
+  {
+    "name": "magnetic coil",
+    "time": 0.5,
+    "recipes" : [
+      { "materials" : [[1, "magnet"], [0.5, "copper ingot"]], "factory" : ["assembler"] }
+    ]
+  },
+  {
+    "name": "circuit board",
+    "time": 0.5,
+    "recipes" : [
+      { "materials" : [[1, "iron ingot"], [0.5, "copper ingot"]], "factory" : ["assembler"] }
+    ]
+  },
+  {
+    "name": "gear",
+    "time": 1,
+    "recipes" : [
+      { "materials" : [[1, "iron"]], "factory" : ["assembler"] }
+    ]
+  },
+
+  {
+    "name": "conveyor mkI",
+    "time": 0.33,
+    "recipes" : [
+      { "materials" : [[0.67, "iron ingot"], [0.33, "magnetic coil"]], "factory" : ["assembler"] }
+    ]
+  }
+
+]
