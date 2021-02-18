@@ -17,9 +17,9 @@ class ProductionChain extends React.Component {
   }
 
   render() {
-    console.log('render', this.state)
+    console.log('render', this.state, this.state.chain[0].depth === 1)
     const listMaterial = this.state.chain.map((material) =>
-      <Material m={material} onChange={this.handleChange}></Material>
+      <Material m={material} onChange={this.handleChange} isEditable={material.depth[0] === 1}></Material>
     );
     console.log('listMaterial', listMaterial)
     return (
@@ -33,6 +33,7 @@ class ProductionChain extends React.Component {
   }
 
   handleChange (newQty) {
+    console.log('handleChange', newQty)
     var chain = DSPMath.getProductionChain('conveyor mkI', newQty)
     this.setState({ chain })
   }

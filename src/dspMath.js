@@ -12,7 +12,7 @@ const factories = require('./data/factories.json')
 function computeProductionChain(material, qty, chain, depth) {
   chain = chain ? chain : []
   depth = depth ? depth + 1 : 1
-  qty = qty ? qty : 1
+  qty = qty ? qty : 0
 
   if (depth > 20) return 
   

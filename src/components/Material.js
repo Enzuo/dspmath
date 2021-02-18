@@ -4,10 +4,10 @@ class Material extends React.Component {
   constructor(props){
     super(props)
     console.log('Material constructor')
-    var unitPerSecond = props.m.qty || 1
+    // var unitPerSecond = props.m.qty || 1
     this.state = { 
-      unitPerSecond : formatNumber(unitPerSecond), 
-      unitPerMinute : formatNumber(unitPerSecond * 60)
+      unitPerSecond : null,
+      unitPerMinute : null,
     }
 
     this.handleUnitPerMinute = this.handleUnitPerMinute.bind(this);
@@ -15,16 +15,25 @@ class Material extends React.Component {
     this.handleQtyChange = this.handleQtyChange.bind(this);
   }
   render() {
+    var unitPerMinute = this.props.m.qty * 60
+    var unitPerSecond = this.props.m.qty
+
+    var MyInput = function (props) {
+      if(props.isEditable){
+        return <input type={props.number} name={props.name} value={props.value} onChange={props.onChange} onBlur={props.onBlur}></input>
+      }
+      return <span>{props.value}</span>
+    }
     return (
       <div className="Element">
         <div>
           {this.props.m.name}
         </div>
         <div>
-          u/min <input type="number" name="unitPerMinute" value={this.state.unitPerMinute} onChange={this.handleUnitPerMinute} onBlur={this.handleQtyChange}></input>
+          u/min <MyInput type="number" name="unitPerMinute" value={unitPerMinute} onChange={this.handleUnitPerMinute} onBlur={this.handleQtyChange} isEditable={this.props.isEditable}></MyInput>
         </div>
         <div>
-          u/s <input type="number" name="unitPerSecond" value={this.state.unitPerSecond} onChange={this.handleUnitPerSecond} onBlur={this.handleQtyChange}></input>
+          u/s <MyInput type="number" name="unitPerSecond" value={unitPerSecond} onChange={this.handleUnitPerSecond} onBlur={this.handleQtyChange} isEditable={this.props.isEditable}></MyInput>
         </div>
         <div>
           factories required :
@@ -34,26 +43,27 @@ class Material extends React.Component {
     )
   }
   handleUnitPerMinute (e) {
-    this.setState({
-      unitPerSecond : formatNumber(e.target.value / 60),
-      unitPerMinute : e.target.value
-    })
+    // this.setState({
+    //   unitPerSecond : formatNumber(e.target.value / 60),
+    //   unitPerMinute : e.target.value
+    // })
+    var newQty = e.target.value / 60
+    // this.props.onChange(newQty)
   }
   
   handleUnitPerSecond (e) {
-    this.setState({
-      unitPerSecond : e.target.value,
-      unitPerMinute : formatNumber(e.target.value * 60)
-    })
+    var newQty = e.target.value
+    // console.log(newQty)
+    this.props.onChange(newQty)
   }
 
   handleQtyChange () {
-    this.props.onChange(this.state.unitPerSecond)
+    // this.props.onChange(this.state.unitPerSecond)
   }
 }
 
 function formatNumber (nb) {
-  return nb.toFixed(2).replace(/[.,]00$/, "")
+  return parseFloat(nb).toFixed(2).replace(/[.,]00$/, "")
 }
 
 export default Material
