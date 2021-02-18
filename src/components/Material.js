@@ -6,34 +6,31 @@ class Material extends React.Component {
     console.log('Material constructor')
     // var unitPerSecond = props.m.qty || 1
     this.state = { 
-      unitPerSecond : null,
-      unitPerMinute : null,
+      unitPerSecond : this.props.m.qty,
+      unitPerMinute : this.props.m.qty * 60,
     }
 
     this.handleUnitPerMinute = this.handleUnitPerMinute.bind(this);
     this.handleUnitPerSecond = this.handleUnitPerSecond.bind(this);
-    this.handleQtyChange = this.handleQtyChange.bind(this);
   }
   render() {
-    var unitPerMinute = this.props.m.qty * 60
-    var unitPerSecond = this.props.m.qty
-
-    var MyInput = function (props) {
-      if(props.isEditable){
-        return <input type={props.number} name={props.name} value={props.value} onChange={props.onChange} onBlur={props.onBlur}></input>
-      }
-      return <span>{props.value}</span>
+    var unitPerSecond = formatNumber(this.props.m.qty)
+    var unitPerMinute = formatNumber(this.props.m.qty * 60)
+    if (this.props.isEditable) {
+      unitPerSecond = this.state.unitPerSecond
+      unitPerMinute = this.state.unitPerMinute
     }
+
     return (
-      <div className="Element">
+      <div className="material">
         <div>
           {this.props.m.name}
         </div>
         <div>
-          u/min <MyInput type="number" name="unitPerMinute" value={unitPerMinute} onChange={this.handleUnitPerMinute} onBlur={this.handleQtyChange} isEditable={this.props.isEditable}></MyInput>
+          u/min <EditableField type="number" name="unitPerMinute" value={unitPerMinute} onChange={this.handleUnitPerMinute} isEditable={this.props.isEditable}></EditableField>
         </div>
         <div>
-          u/s <MyInput type="number" name="unitPerSecond" value={unitPerSecond} onChange={this.handleUnitPerSecond} onBlur={this.handleQtyChange} isEditable={this.props.isEditable}></MyInput>
+          u/s <EditableField type="number" name="unitPerSecond" value={unitPerSecond} onChange={this.handleUnitPerSecond} isEditable={this.props.isEditable}></EditableField>
         </div>
         <div>
           factories required :
@@ -43,23 +40,23 @@ class Material extends React.Component {
     )
   }
   handleUnitPerMinute (e) {
-    // this.setState({
-    //   unitPerSecond : formatNumber(e.target.value / 60),
-    //   unitPerMinute : e.target.value
-    // })
-    var newQty = e.target.value / 60
-    // this.props.onChange(newQty)
+    var newQty = e.target.value
+    this.setState({
+      unitPerSecond : formatNumber(newQty / 60),
+      unitPerMinute : newQty
+    })
+    this.props.onChange(newQty/60)
   }
   
   handleUnitPerSecond (e) {
     var newQty = e.target.value
-    // console.log(newQty)
+    this.setState({
+      unitPerSecond : newQty,
+      unitPerMinute : formatNumber(newQty * 60)
+    })
     this.props.onChange(newQty)
   }
-
-  handleQtyChange () {
-    // this.props.onChange(this.state.unitPerSecond)
-  }
+  
 }
 
 function formatNumber (nb) {
@@ -67,3 +64,26 @@ function formatNumber (nb) {
 }
 
 export default Material
+
+
+class EditableField extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.props.onChange(e.target.value)
+  }
+
+  handleBlur(e) {
+    this.props.onBlur()
+  }
+
+  render() {
+    if(this.props.isEditable){
+      return <input type={this.props.type} name={this.props.name} value={this.props.value} onChange={this.props.onChange} onBlur={this.props.onBlur}></input>
+    }
+    return <span>{this.props.value}</span>
+  }
+}
