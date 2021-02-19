@@ -1,7 +1,7 @@
 [
   {
     "name": "iron ore",
-    "time": 2,
+    "type" : "ore",
     "desc": "30 ore per minute for one mineral"
   },
   {
@@ -55,10 +55,7 @@
 
   {
     "name": "conveyor mkI",
-    "time": 0.33,
-    "recipes" : [
-      { "materials" : [[0.67, "iron ingot"], [0.33, "magnetic coil"]], "factory" : ["assembler"] }
-    ]
+    "type": "building"
   }
 
 ]
