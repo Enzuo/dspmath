@@ -9,7 +9,6 @@
     "time": 2,
     "desc": "30 ore per minute for one mineral covered"
   },
-
   {
     "name": "iron ingot",
     "time": 1,
@@ -50,7 +49,7 @@
     "name": "gear",
     "time": 1,
     "recipes" : [
-      { "materials" : [[1, "iron"]], "factory" : ["assembler"] }
+      { "materials" : [[1, "iron ingot"]], "factory" : ["assembler"] }
     ]
   },
 

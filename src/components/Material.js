@@ -1,9 +1,12 @@
-import React from 'react';
+import React from 'react'
+import Select from 'react-select'
+const materials = require('../data/materials.json')
+
+
 
 class Material extends React.Component {
   constructor(props){
     super(props)
-    console.log('Material constructor')
     // var unitPerSecond = props.m.qty || 1
     this.state = { 
       unitPerSecond : this.props.m.qty,
@@ -12,6 +15,7 @@ class Material extends React.Component {
 
     this.handleUnitPerMinute = this.handleUnitPerMinute.bind(this);
     this.handleUnitPerSecond = this.handleUnitPerSecond.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
   }
   render() {
     var unitPerSecond = formatNumber(this.props.m.qty)
@@ -21,9 +25,14 @@ class Material extends React.Component {
       unitPerMinute = this.state.unitPerMinute
     }
 
+    var selectOptions = materials.map(function(a) {
+      return { value : a.name, label : a.name}
+    })
+
     return (
       <div className="material">
         <div>
+          <Select options={selectOptions} onChange={this.handleSelectChange}/>
           {this.props.m.name}
         </div>
         <div>
@@ -55,6 +64,10 @@ class Material extends React.Component {
       unitPerMinute : formatNumber(newQty * 60)
     })
     this.props.onChange(newQty)
+  }
+
+  handleSelectChange (e) {
+    this.props.onChange(this.state.unitPerSecond, e.value)
   }
   
 }

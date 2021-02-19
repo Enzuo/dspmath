@@ -8,7 +8,8 @@ class ProductionChain extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      chain : []
+      chain : [],
+      selectedMaterial : 'conveyor mkI'
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -28,13 +29,16 @@ class ProductionChain extends React.Component {
   }
   pickMaterial () {
     // console.log(DSPMath)
-    var chain = DSPMath.getProductionChain('conveyor mkI', 3)
+    var chain = DSPMath.getProductionChain(this.state.selectedMaterial, 3)
     return chain
   }
 
-  handleChange (newQty) {
-    console.log('handleChange', newQty)
-    var chain = DSPMath.getProductionChain('conveyor mkI', newQty)
+  handleChange (newQty, obj) {
+    console.log('handleChange', newQty, obj)
+    if(obj){
+      this.setState({ selectedMaterial : obj})
+    }
+    var chain = DSPMath.getProductionChain(obj || this.state.selectedMaterial, newQty)
     this.setState({ chain })
   }
 }
