@@ -14,7 +14,7 @@
   },
   {
     "time"     : 1.5,
-    "input"    : [[1, "copper ore"]],
+    "input"    : [[1, "iron ore"]],
     "output"   : [[1, "magnet"]],
     "facility" : "smelter"    
   },
