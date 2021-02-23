@@ -3,8 +3,8 @@ const fs = require('fs');
 
 function recipesJSONToCSV (recipesJSON) {
   var header = 'name;time'
-  header += ';input_1_qty;input_1_name;input_2_qty;input_2_name;input_3_qty;input_3_name'
   header += ';output_1_qty;output_1_name;output_2_qty;output_2_name;output_3_qty;output_3_name'
+  header += ';input_1_qty;input_1_name;input_2_qty;input_2_name;input_3_qty;input_3_name;input_4_qty;input_4_name'
   header += ';facility\n'
 
   var csv = header
@@ -13,18 +13,18 @@ function recipesJSONToCSV (recipesJSON) {
   var lines = recipes.map(function(recipe){
     var line = recipe.name + ';' + recipe.time + ';'
     for(var i=0; i<3; i++){
+      line += recipe.output[i] ? recipe.output[i][0] : ''
+      line += ';'
+      line += recipe.output[i] ? recipe.output[i][1] : ''
+      line += ';'
+    }
+    for(var i=0; i<4; i++){
       line += recipe.input[i] ? recipe.input[i][0] : ''
       line += ';'
       line += recipe.input[i] ? recipe.input[i][1] : ''
       line += ';'
     }
     
-    for(var i=0; i<3; i++){
-      line += recipe.output[i] ? recipe.output[i][0] : ''
-      line += ';'
-      line += recipe.output[i] ? recipe.output[i][1] : ''
-      line += ';'
-    }
     line += recipe.facility
     return line
   })
@@ -34,27 +34,27 @@ function recipesJSONToCSV (recipesJSON) {
 }
 
 function recipesCSVToJSON(recipesCSV) {
-  var lines = recipesCSV.split('\n');
+  var lines = recipesCSV.split('\r\n');
 
-  var result = [];
-  var headers=lines[0].split(';');
+  var csvArray = [];
+  var headers=lines[0].split(',');
 
   for(var i=1;i<lines.length;i++){
 
     var obj = {};
-    var currentline=lines[i].split(';');
+    var currentline=lines[i].split(',');
 
     for(var j=0;j<headers.length;j++){
       obj[headers[j]] = currentline[j]
     }
 
-    result.push(obj);
+    csvArray.push(obj);
   }
 
-  return JSON.stringify(result.map(function(row){
+  return JSON.stringify(csvArray.map(function(row){
     var input = []
     var output = []
-    for(var i=0; i<3; i++){
+    for(var i=0; i<4; i++){
       if(row['input_'+i+'_qty'] || row['input_'+i+'_name']){
         input.push([parseFloat(row['input_'+i+'_qty']),row['input_'+i+'_name']])
       }
@@ -62,7 +62,6 @@ function recipesCSVToJSON(recipesCSV) {
         output.push([parseFloat(row['output_'+i+'_qty']),row['output_'+i+'_name']])
       }
     }
-
     return { 
       name : row.name, 
       time : parseFloat(row.time), 
@@ -70,6 +69,12 @@ function recipesCSVToJSON(recipesCSV) {
       output, 
       facility : row.facility
     }
+  // only keep complete recipes, remove empty lines
+  }).filter(function(row){
+    if(row.output.length > 0){
+      return true
+    }
+    return false
   }))
 }
 
