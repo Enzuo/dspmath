@@ -1,0 +1,10 @@
+[
+  {
+    "name": "iron ore",
+    "type" : "ore"
+  },
+  {
+    "name": "magnet",
+    "type": "component"
+  }
+]

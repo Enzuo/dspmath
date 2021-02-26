@@ -1,11 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
-import ProductionChain from './components/ProductionChain'
+import Main from './components/Main'
 
 function App() {
   return (
     <div className="App">
-      <ProductionChain ></ProductionChain>
+      <Main ></Main>
     </div>
   );
 }
