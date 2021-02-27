@@ -15,7 +15,9 @@ export default class Main extends React.Component {
     
     this.state = {
       items : ITEMS,
-      productionChain : []
+      productionChain : [],
+      qtyWanted : 10,
+      itemWanted : null
     }
 
     this.handleSelectChange = this.handleSelectChange.bind(this)
@@ -25,15 +27,26 @@ export default class Main extends React.Component {
     return (
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
+        <input value={this.state.qtyWanted} onChange={this.changeQtyWanted}></input>
         <ProductionChain chain={this.state.productionChain}></ProductionChain>
       </div>
     )
   }
 
   handleSelectChange(item){
-    var chain = DSPMath.getProductionChain(item, 10)
+    var chain = DSPMath.getProductionChain(item, this.state.qtyWanted)
     this.setState({
-      productionChain : chain
+      productionChain : chain,
+      itemWanted : item
+    })
+  }
+
+  changeQtyWanted = (e) => {
+    var qtyWanted = e.target.value
+    var chain = DSPMath.getProductionChain(this.state.itemWanted, qtyWanted)
+    this.setState({ 
+      productionChain : chain,      
+      qtyWanted : e.target.value 
     })
   }
 }
