@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemSelect from './ItemSelect.js'
+import ProductionChain from './ProductionChain.js'
 
 import DSPMath from '../dspMath.js'
 
@@ -13,7 +14,8 @@ export default class Main extends React.Component {
     super(props)
     
     this.state = {
-      items : ITEMS
+      items : ITEMS,
+      productionChain : []
     }
 
     this.handleSelectChange = this.handleSelectChange.bind(this)
@@ -23,11 +25,15 @@ export default class Main extends React.Component {
     return (
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
+        <ProductionChain chain={this.state.productionChain}></ProductionChain>
       </div>
     )
   }
 
   handleSelectChange(item){
-    DSPMath.getProductionChain(item, 10)
+    var chain = DSPMath.getProductionChain(item, 10)
+    this.setState({
+      productionChain : chain
+    })
   }
 }
