@@ -1,14 +1,14 @@
 import React from 'react'
 
 
-class Material extends React.Component {
+class Item extends React.Component {
   constructor(props){
     super(props)
   }
 
   render() {
     return (
-      <div className="material">
+      <div className="material" onClick={this.handleClick}>
         <div>
           {this.props.m.name}
         </div>
@@ -22,10 +22,14 @@ class Material extends React.Component {
       </div>
     )
   }
+
+  handleClick = (e) => {
+    this.props.onClick(this.props.m)
+  }
 }
 
 function formatNumber (nb) {
   return parseFloat(nb).toFixed(2).replace(/[.,]00$/, "")
 }
 
-export default Material
+export default Item

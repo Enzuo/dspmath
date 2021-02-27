@@ -12,7 +12,7 @@ const RECIPES   = require('./data/recipes.json')
  * @param {Integer} feedNode
  */
 var nodeId = 0;
-function computeProductionChain(itemName, qtyNeeded, chain, depth, feedNodeId) {
+function computeProductionChain(itemName, qtyNeeded, options, chain, depth, feedNodeId) {
   chain = chain ? chain : []
   depth = depth ? depth + 1 : 1
   qtyNeeded = qtyNeeded ? qtyNeeded : 0
@@ -29,6 +29,13 @@ function computeProductionChain(itemName, qtyNeeded, chain, depth, feedNodeId) {
 
   chain.push(itemObj)
 
+  if(options){
+    var remoteProducedItems = options.remoteProducedItems
+    if(remoteProducedItems.find(a => a === itemName)){
+      return chain
+    }
+  }
+
   var {recipe, itemIndex} = getRecipeForItem(itemName)
 
   if (recipe) {
@@ -43,7 +50,7 @@ function computeProductionChain(itemName, qtyNeeded, chain, depth, feedNodeId) {
       var neededMaterial = recipe.input[i][1]
       var neededQuantity = recipe.input[i][0] * qtyRecipeNeeded //* qtyRecipeNeededPerSecond
   
-      computeProductionChain(neededMaterial, neededQuantity, chain, depth, id)
+      computeProductionChain(neededMaterial, neededQuantity, options, chain, depth, id)
     }
   }
 
@@ -89,6 +96,7 @@ function mergeProductionChain(chain) {
   var newChain = []
   for(var i=0; i<chain.length; i++) {
     var material = chain[i]
+
     var mergedMaterial = newChain.find(function(a){
       if (a.name === material.name) {
         return true
@@ -98,12 +106,14 @@ function mergeProductionChain(chain) {
     if(!mergedMaterial){
       mergedMaterial = clone(material)
       mergedMaterial.depth = [mergedMaterial.depth]
+      mergedMaterial.feedNodes = [[mergedMaterial.feedNodeId, mergedMaterial.qty]]
       newChain.push(mergedMaterial)
       continue
     }
 
     mergedMaterial.qty += material.qty
     mergedMaterial.depth.push(material.depth)
+    mergedMaterial.feedNodes.push([material.feedNodeId, material.qty])
   }
 
   return newChain
@@ -138,17 +148,35 @@ function addNeededFactories (productionChain) {
 }
 
 
-function getProductionChain(material, qty){
-  var chain = computeProductionChain(material, qty)
-  console.log("base production chain", chain)
+function getProductionChain(item, qty, options){
+  var rawChain = computeProductionChain(item, qty, options)
+  console.log("raw production chain", rawChain)
 
-  var mergedChain = mergeProductionChain(chain)
+  var mergedChain = mergeProductionChain(rawChain)
   var productionChain = addNeededFactories(mergedChain)
   
   console.log("merged production chain", productionChain)
   return productionChain
 }
 
+function toggleRemoteProduceItem(array, item){
+
+  // var chainNode = chain.find(function(n){
+  //   if(n.id === item.id){
+  //     return true
+  //   }
+  // })
+  // chainNode.isRemotelyProduced = true;
+  var index = array.findIndex(a => a === item.name)
+  if(index >= 0){
+    array.splice(index)
+    return array
+  }
+  array.push(item.name)
+  return array
+}
+
 export default {
-  getProductionChain
+  getProductionChain,
+  toggleRemoteProduceItem,
 }

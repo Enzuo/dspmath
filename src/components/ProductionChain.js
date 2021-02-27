@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Material from './Material'
+import Item from './Item'
 
 
 class ProductionChain extends React.Component {
@@ -11,11 +11,11 @@ class ProductionChain extends React.Component {
   render() {
     var chain = this.props.chain
 
-    const listMaterial = chain.map((material) =>
-      <Material m={material}></Material>
+    const listItem = chain.map((item) =>
+      <Item m={item} onClick={this.props.onItemClick}></Item>
     );
     return (
-      <ul>{listMaterial}</ul>
+      <ul>{listItem}</ul>
     )
   }
 }
