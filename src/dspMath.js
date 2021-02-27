@@ -176,7 +176,34 @@ function toggleRemoteProduceItem(array, item){
   return array
 }
 
+function getIOFromChain(chain){
+  var inputs = []
+  var outputs = []
+  for(var i=0; i<chain.length; i++){
+    var item = chain[i]
+    if(!item.feedNodeId){
+      outputs.push(item)
+      continue
+    }
+    // if item is fed by any other node then it's not an input
+    var fedByNode = chain.find((node) => {
+      for(var j=0; j<node.feedNodes.length; j++){
+        if(node.feedNodes[j][0] === item.id){
+          return true
+        }
+      }
+      return false
+    })
+    if(!fedByNode){
+      inputs.push(item)
+    }
+  }
+
+  return {inputs, outputs}
+}
+
 export default {
   getProductionChain,
   toggleRemoteProduceItem,
+  getIOFromChain,
 }

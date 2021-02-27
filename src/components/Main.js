@@ -1,6 +1,7 @@
 import React from 'react'
 import ItemSelect from './ItemSelect.js'
 import ProductionChain from './ProductionChain.js'
+import InputOutput from './InputOutput.js'
 
 import DSPMath from '../dspMath.js'
 
@@ -27,11 +28,13 @@ export default class Main extends React.Component {
   render(){
     var remoteProducedItems = this.state.remoteProducedItems
     var productionChain = DSPMath.getProductionChain(this.state.itemWanted, this.state.qtyWanted, {remoteProducedItems})
+    var io = DSPMath.getIOFromChain(productionChain)
     return (
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
         <ProductionChain chain={productionChain} onItemClick={this.handleItemClick}></ProductionChain>
+        <InputOutput d={io}></InputOutput>
       </div>
     )
   }

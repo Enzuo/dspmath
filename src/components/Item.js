@@ -1,12 +1,26 @@
 import React from 'react'
 
 
-class Item extends React.Component {
+export default class Item extends React.Component {
+  static defaultProps = {
+    showFactories : true
+  }
   constructor(props){
     super(props)
   }
 
   render() {
+
+    var factories = (
+      <div>
+        factories required :
+        {formatNumber(this.props.m.nbFactory)}
+      </div>
+    )
+    if(this.props.showFactories === false){
+      factories = null
+    }
+    
     return (
       <div className="material" onClick={this.handleClick}>
         <div>
@@ -15,21 +29,18 @@ class Item extends React.Component {
         <div>
           {this.props.m.qty} u/s 
         </div>
-        <div>
-          factories required :
-          {formatNumber(this.props.m.nbFactory)}
-        </div>
+        {factories}
       </div>
     )
   }
 
   handleClick = (e) => {
-    this.props.onClick(this.props.m)
+    if(this.props.onClick) {
+      this.props.onClick(this.props.m)
+    }
   }
 }
 
 function formatNumber (nb) {
   return parseFloat(nb).toFixed(2).replace(/[.,]00$/, "")
 }
-
-export default Item
