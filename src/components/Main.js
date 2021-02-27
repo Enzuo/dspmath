@@ -2,6 +2,7 @@ import React from 'react'
 import ItemSelect from './ItemSelect.js'
 import ProductionChain from './ProductionChain.js'
 import InputOutput from './InputOutput.js'
+import PlanetList from './PlanetList.js'
 
 import DSPMath from '../dspMath.js'
 
@@ -16,10 +17,11 @@ export default class Main extends React.Component {
     
     this.state = {
       items : ITEMS,
-      // productionChain : [],
       qtyWanted : 10,
       itemWanted : null,
       remoteProducedItems : [],
+      planets : [],
+      selectedPlanet : null,
     }
 
     this.handleSelectChange = this.handleSelectChange.bind(this)
@@ -34,13 +36,13 @@ export default class Main extends React.Component {
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
         <ProductionChain chain={productionChain} onItemClick={this.handleItemClick}></ProductionChain>
-        <InputOutput d={io}></InputOutput>
+        <InputOutput d={io} onAdd={this.handleAddIO} planet={this.state.selectedPlanet}></InputOutput>
+        <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
       </div>
     )
   }
 
   handleSelectChange(item){
-    // var chain = DSPMath.getProductionChain(item, this.state.qtyWanted)
     this.setState({
       itemWanted : item
     })
@@ -48,9 +50,8 @@ export default class Main extends React.Component {
 
   handleQtyWantedChange = (e) => {
     var qtyWanted = e.target.value
-    // var chain = DSPMath.getProductionChain(this.state.itemWanted, qtyWanted)
     this.setState({      
-      qtyWanted : e.target.value 
+      qtyWanted
     })
   }
 
@@ -60,5 +61,22 @@ export default class Main extends React.Component {
     this.setState({
       remoteProducedItems
     })
+  }
+
+  handlePlanetAdd = (name) => {
+    this.state.planets.push({name})
+    this.setState({
+      planets : this.state.planets
+    })
+  }
+
+  handlePlanetSelect = (planet) => {
+    this.setState({
+      selectedPlanet : planet
+    })
+  }
+
+  handleAddIO = (io) => {
+
   }
 }
