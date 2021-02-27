@@ -129,7 +129,7 @@ function addNeededFactories (productionChain) {
       var factoryRatio = factory ? factory.ratio : 1       
       itemObj.factory = factory ? factory.name : 'unknow'
 
-      itemObj.nbFactory = itemObj.qty / (recipe.time/factoryRatio)
+      itemObj.nbFactory = (itemObj.qty * recipe.time)/factoryRatio
     }
     
   }
