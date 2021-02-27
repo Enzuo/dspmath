@@ -4,39 +4,46 @@ const RECIPES   = require('./data/recipes.json')
 
 
 /**
- * return all materials needed for the production of this material
- * @param {String} material name
- * @param {Number} qtyNeededPerSecond
+ * return all items needed for the production of one item
+ * @param {String} itemName name
+ * @param {Number} qtyNeeded
  * @param {Array} chain production chain array
  * @param {Integer} depth
+ * @param {Integer} feedNode
  */
-function computeProductionChain(material, qtyNeededPerSecond, chain, depth) {
+var nodeId = 0;
+function computeProductionChain(itemName, qtyNeeded, chain, depth, feedNodeId) {
   chain = chain ? chain : []
   depth = depth ? depth + 1 : 1
-  var qty = qtyNeededPerSecond ? qtyNeededPerSecond : 0
+  qtyNeeded = qtyNeeded ? qtyNeeded : 0
+  var id = ++nodeId
 
   if (depth > 20) return 
   
-  var materialObj = getMaterialDetails(material)
-  materialObj.name = material
-  materialObj.qty = qty
-  materialObj.depth = depth
+  var itemObj = {} // getMaterialDetails(itemName)
+  itemObj.id = id
+  itemObj.name = itemName
+  itemObj.qty = qtyNeeded
+  itemObj.depth = depth
+  itemObj.feedNodeId = feedNodeId
 
-  chain.push(materialObj)
+  chain.push(itemObj)
 
-  var {recipe, materialIndex} = findRecipe(material)
+  var {recipe, itemIndex} = getRecipeForItem(itemName)
 
   if (recipe) {
-    materialObj.recipe = recipe
-    var qtyMadePerRecipe = recipe.output[materialIndex][0]
-    var qtyMadePerSecondPerRecipe = qtyMadePerRecipe / recipe.time
-    var qtyRecipeNeededPerSecond = qtyNeededPerSecond / qtyMadePerSecondPerRecipe
+    // time : 2 , out : 1, need : 2
+    itemObj.recipe = recipe
+
+    var qtyMadePerRecipe = recipe.output[itemIndex][0]
+    // var qtyMadePerSecondPerRecipe = qtyMadePerRecipe / recipe.time
+    var qtyRecipeNeeded = qtyNeeded / qtyMadePerRecipe
   
     for (var i=0; i < recipe.input.length; i++) {
       var neededMaterial = recipe.input[i][1]
-      var neededQuantity = recipe.input[i][0] * qtyRecipeNeededPerSecond
+      var neededQuantity = recipe.input[i][0] * qtyRecipeNeeded //* qtyRecipeNeededPerSecond
   
-      computeProductionChain(neededMaterial, neededQuantity, chain, depth)
+      computeProductionChain(neededMaterial, neededQuantity, chain, depth, id)
     }
   }
 
@@ -60,12 +67,12 @@ function getMaterialDetails(materialName) {
   return clone(material)
 }
 
-function findRecipe (material) {
-  var materialIndex
+function getRecipeForItem (itemName) {
+  var itemIndex
   var recipe = RECIPES.find(function(r){
     for(var j=0; j < r.output.length; j++) {
-      if(r.output[j][1] === material){
-        materialIndex = j
+      if(r.output[j][1] === itemName){
+        itemIndex = j
         return true
       }
     }
@@ -75,7 +82,7 @@ function findRecipe (material) {
     return {recipe: null}
   }
 
-  return {recipe, materialIndex}
+  return {recipe, itemIndex}
 }
 
 function mergeProductionChain(chain) {
@@ -108,24 +115,23 @@ function clone(obj) {
 
 function addNeededFactories (productionChain) {
   for(var i=0; i<productionChain.length; i++) {
-    var material = productionChain[i]
+    var itemObj = productionChain[i]
     
     var factory
-    if(material.recipes){
-      var recipe = material.recipes[0]
+    if(itemObj.recipe){
+
+      var recipe = itemObj.recipe
       factory = factories.find(function(a){
-        if(a.type === recipe.factory[0]){
+        if(a.type === recipe.facility){
           return true
         }
       })
+      var factoryRatio = factory ? factory.ratio : 1       
+      itemObj.factory = factory ? factory.name : 'unknow'
+
+      itemObj.nbFactory = itemObj.qty / (recipe.time/factoryRatio)
     }
     
-    var factoryRatio = factory ? factory.ratio : 1       
-    
-    material.factory = factory ? factory.name : 'unknow'
-
-    // qty needed per second / ((qty per sec) * factory speed ratio)
-    material.nbFactory = material.qty / ((1/material.time) * factoryRatio)
   }
 
   return productionChain
@@ -134,10 +140,12 @@ function addNeededFactories (productionChain) {
 
 function getProductionChain(material, qty){
   var chain = computeProductionChain(material, qty)
+  console.log("base production chain", chain)
+
   var mergedChain = mergeProductionChain(chain)
   var productionChain = addNeededFactories(mergedChain)
-
-  console.log("return chainn", productionChain)
+  
+  console.log("merged production chain", productionChain)
   return productionChain
 }
 
