@@ -1,10 +1,29 @@
 [
   {
     "name": "iron ore",
-    "type" : "ore"
+    "type" : "ore",
+    "slot" : [1,1]
   },
   {
+    "name": "copper ore",
+    "type" : "ore",
+    "slot" : [1,2]
+  },
+  {
+    "name": "stone",
+    "type" : "ore",
+    "slot" : [1,3]
+  },
+
+  {
     "name": "magnet",
-    "type": "component"
+    "type": "component",
+    "slot": [3,1]
+  },
+
+  {
+    "name": "electric motor",
+    "type": "component",
+    "slot": [4,4]
   }
 ]

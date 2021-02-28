@@ -34,6 +34,228 @@
     "facility": "smelter"
   },
   {
+    "name": "",
+    "time": 1,
+    "input": [
+      [
+        1,
+        "stone"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "stone brick"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "X-ray cracking",
+    "time": 4,
+    "input": [
+      [
+        2,
+        "hydrogen"
+      ],
+      [
+        1,
+        "refined oil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "energetic graphite"
+      ],
+      [
+        3,
+        "hydrogen"
+      ]
+    ],
+    "facility": "oil refinery"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "coal"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "energetic graphite"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "silicon ore"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "high-purity silicon"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "titanium ore"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "titanium ingot"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 1.2,
+    "input": [],
+    "output": [
+      [
+        1,
+        "sulfuric acid"
+      ]
+    ],
+    "facility": "water pump"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        6,
+        "refined oil"
+      ],
+      [
+        8,
+        "stone"
+      ],
+      [
+        4,
+        "water"
+      ]
+    ],
+    "output": [
+      [
+        4,
+        "sulfuric acid"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "Plasma refining",
+    "time": 4,
+    "input": [
+      [
+        2,
+        "crude oil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "hydrogen"
+      ],
+      [
+        2,
+        "refined oil"
+      ]
+    ],
+    "facility": "oil refinery"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        5,
+        "hydrogen"
+      ],
+      [
+        1,
+        "titanium ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "hydrogen fuel rod"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        10,
+        "deuterium"
+      ],
+      [
+        1,
+        "super-magnetic ring"
+      ],
+      [
+        1,
+        "titanium alloy"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "deuteron fuel rod"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 12,
+    "input": [
+      [
+        10,
+        "antimatter"
+      ],
+      [
+        1,
+        "annihilation constraint sphere"
+      ],
+      [
+        10,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "antimatter fuel rod"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
     "name": "undefined",
     "time": 1.5,
     "input": [
@@ -110,16 +332,41 @@
     "facility": "assembler"
   },
   {
-    "name": "undefined",
-    "time": 1,
+    "name": "",
+    "time": 2,
     "input": [
+      [
+        1,
+        "gear"
+      ],
       [
         2,
         "iron ingot"
       ],
       [
         1,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "electric motor"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "undefined",
+    "time": 1,
+    "input": [
+      [
+        1,
         "gear"
+      ],
+      [
+        2,
+        "iron ingot"
       ]
     ],
     "output": [
