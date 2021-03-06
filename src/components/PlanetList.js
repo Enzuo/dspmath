@@ -1,4 +1,6 @@
 import React from 'react'
+import getUid from 'get-uid'
+
 
 export default class Planets extends React.Component {
   constructor(props){
@@ -11,7 +13,7 @@ export default class Planets extends React.Component {
 
   render () {
     var planets = this.props.d.map((planet) => {
-      return (<li data={planet.name} onClick={this.handleSelect}>{planet.name}</li>)
+      return (<li key={planet.id} data={planet.id} onClick={this.handleSelect}>{planet.name}</li>)
     })
     return (
       <div>
@@ -23,13 +25,12 @@ export default class Planets extends React.Component {
 
   handleAdd = (e) => {
     console.log('add planet')
-    // TODO generate ids ?
-    this.props.onPlanetAdd(this.state.newName)
+    this.props.onPlanetAdd({id: getUid(), name: this.state.newName})
   }
 
   handleSelect = (e) => {
-    var planet = e.target.getAttribute('data')
+    var planetId = parseInt(e.target.getAttribute('data'))
     console.log('select planet', e.target.getAttribute('data'))
-    this.props.onPlanetSelect(planet)
+    this.props.onPlanetSelect(planetId)
   }
 }

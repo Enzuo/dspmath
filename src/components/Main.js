@@ -63,17 +63,22 @@ export default class Main extends React.Component {
     })
   }
 
-  handlePlanetAdd = (name) => {
-    this.state.planets.push({name})
+  handlePlanetAdd = (planet) => {
+    this.state.planets.push(planet)
     this.setState({
       planets : this.state.planets
     })
   }
 
-  handlePlanetSelect = (planet) => {
-    this.setState({
-      selectedPlanet : planet
+  handlePlanetSelect = (planetId) => {
+    var planet = this.state.planets.find((a) => {
+      if(a.id === planetId) return true
     })
+    if (planet) {
+      this.setState({
+        selectedPlanet : planet
+      })
+    }
   }
 
   handleAddIO = (io) => {

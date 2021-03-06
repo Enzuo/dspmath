@@ -15,6 +15,8 @@ export default class InputOutput extends React.Component {
       return <Item m={a} showFactories={false}></Item>
     })
 
+    var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add IO to {this.props.planet.name}</button> : null
+
     return (
       <div>
         Inputs :
@@ -25,7 +27,7 @@ export default class InputOutput extends React.Component {
         <ul>
           {listOutput}
         </ul>
-        <button onClick={this.handleAddToPlanet}>Add IO to {this.props.planet}</button>
+        {addToPlanet}
       </div>
     )
   }
