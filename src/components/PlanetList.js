@@ -1,5 +1,6 @@
 import React from 'react'
 import getUid from 'get-uid'
+import './PlanetList.css'
 
 
 export default class Planets extends React.Component {
@@ -13,7 +14,8 @@ export default class Planets extends React.Component {
 
   render () {
     var planets = this.props.d.map((planet) => {
-      return (<li key={planet.id} data={planet.id} onClick={this.handleSelect}>{planet.name}</li>)
+      var className = this.props.selected ? planet.id === this.props.selected.id ? 'selected' : null : null
+      return (<li key={planet.id} data={planet.id} className={className} onClick={this.handleSelect}>{planet.name}</li>)
     })
     return (
       <div>

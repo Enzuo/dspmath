@@ -3,6 +3,8 @@ import ItemSelect from './ItemSelect.js'
 import ProductionChain from './ProductionChain.js'
 import InputOutput from './InputOutput.js'
 import PlanetList from './PlanetList.js'
+import getUid from 'get-uid'
+
 
 import DSPMath from '../dspMath.js'
 
@@ -81,7 +83,21 @@ export default class Main extends React.Component {
     }
   }
 
-  handleAddIO = (io) => {
+  handleAddIO = (d) => {
+    var {inputs, outputs} = d
+    var io = { 
+      tower : {id: getUid(), name : 'tower'}, 
+      inputs, 
+      outputs
+    }
+    var planet = d.planet
+    if(!planet.io){
+      planet.io = []
+    }
+    planet.io.push(io)
 
+    this.setState({
+      selectedPlanet : planet
+    })
   }
 }

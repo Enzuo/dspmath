@@ -34,6 +34,6 @@ export default class InputOutput extends React.Component {
 
   handleAddToPlanet = (e) => {
     var {inputs, outputs} = this.props.d
-    this.props.onAdd({inputs, outputs})
+    this.props.onAdd({inputs, outputs, planet : this.props.planet})
   }
 }
