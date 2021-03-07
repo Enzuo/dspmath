@@ -20,11 +20,34 @@ export default class Item extends React.Component {
     if(this.props.showFactories === false){
       factories = null
     }
+
+    var item = this.props.m.item
+
+    var icon = ''
+    if(item.icon){
+      var spriteSize = 64
+      var x = item.icon[0] - 1
+      var y = item.icon[1] - 1
+      var left = x * spriteSize
+      var top = y * spriteSize
+      var iconStyle = {
+        backgroundImage : 'url(icons.png)',
+        backgroundPosition : 'left -'+left+'px top -'+top+'px',
+        height: '64px',
+        width: '64px'
+      }
+      icon = (
+        <div class="icon" style={iconStyle}></div>
+      )
+    }
+
+
     
     return (
       <div className="material" onClick={this.handleClick}>
+        {icon}
         <div>
-          {this.props.m.name}
+          {item.name}
         </div>
         <div>
           {this.props.m.qty} u/s 

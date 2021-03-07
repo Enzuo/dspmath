@@ -18,7 +18,8 @@
   {
     "name": "magnet",
     "type": "component",
-    "slot": [3,1]
+    "slot": [3,1],
+    "icon": [9,6]
   },
 
   {

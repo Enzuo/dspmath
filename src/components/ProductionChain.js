@@ -11,8 +11,8 @@ class ProductionChain extends React.Component {
   render() {
     var chain = this.props.chain
 
-    const listItem = chain.map((item) =>
-      <Item m={item} onClick={this.props.onItemClick}></Item>
+    const listItem = chain.map((node) =>
+      <Item m={node} onClick={this.props.onItemClick}></Item>
     );
     return (
       <ul>{listItem}</ul>

@@ -1,4 +1,4 @@
-const materials = require('./data/materials.json')
+const ITEMS = require('./data/items.json')
 const factories = require('./data/factories.json')
 const RECIPES   = require('./data/recipes.json')
 
@@ -20,14 +20,14 @@ function computeProductionChain(itemName, qtyNeeded, options, chain, depth, feed
 
   if (depth > 20) return 
   
-  var itemObj = {} // getMaterialDetails(itemName)
-  itemObj.id = id
-  itemObj.name = itemName
-  itemObj.qty = qtyNeeded
-  itemObj.depth = depth
-  itemObj.feedNodeId = feedNodeId
+  var node = {}
+  node.item = getItemDetails(itemName)
+  node.id = id
+  node.qty = qtyNeeded
+  node.depth = depth
+  node.feedNodeId = feedNodeId
 
-  chain.push(itemObj)
+  chain.push(node)
 
   if(options){
     var remoteProducedItems = options.remoteProducedItems
@@ -40,7 +40,7 @@ function computeProductionChain(itemName, qtyNeeded, options, chain, depth, feed
 
   if (recipe) {
     // time : 2 , out : 1, need : 2
-    itemObj.recipe = recipe
+    node.recipe = recipe
 
     var qtyMadePerRecipe = recipe.output[itemIndex][0]
     // var qtyMadePerSecondPerRecipe = qtyMadePerRecipe / recipe.time
@@ -61,17 +61,17 @@ function computeProductionChain(itemName, qtyNeeded, options, chain, depth, feed
  * Return material info
  * @param {String} material 
  */
-function getMaterialDetails(materialName) {
-  var material = materials.find(function (a) {
-    if (a.name === materialName) {
+function getItemDetails(itemName) {
+  var item = ITEMS.find(function (a) {
+    if (a.name === itemName) {
       return true
     }
   })
 
-  if(!material){
-    return { name : materialName }
+  if(!item){
+    return { name : itemName }
   }
-  return clone(material)
+  return clone(item)
 }
 
 function getRecipeForItem (itemName) {
@@ -98,7 +98,7 @@ function mergeProductionChain(chain) {
     var material = chain[i]
 
     var mergedMaterial = newChain.find(function(a){
-      if (a.name === material.name) {
+      if (a.item.name === material.item.name) {
         return true
       }
     })
