@@ -2,6 +2,7 @@ import React from 'react'
 import ItemSelect from './ItemSelect.js'
 import ProductionChain from './ProductionChain.js'
 import InputOutput from './InputOutput.js'
+import Planet from './Planet.js'
 import PlanetList from './PlanetList.js'
 import getUid from 'get-uid'
 
@@ -40,6 +41,7 @@ export default class Main extends React.Component {
         <ProductionChain chain={productionChain} onItemClick={this.handleItemClick}></ProductionChain>
         <InputOutput d={io} onAdd={this.handleAddIO} planet={this.state.selectedPlanet}></InputOutput>
         <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
+        <Planet planet={this.state.selectedPlanet} ></Planet>
       </div>
     )
   }

@@ -37,7 +37,7 @@ export default class Item extends React.Component {
         width: '64px'
       }
       icon = (
-        <div class="icon" style={iconStyle}></div>
+        <div className="icon" style={iconStyle}></div>
       )
     }
 
