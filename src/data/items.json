@@ -2,18 +2,39 @@
   {
     "name": "iron ore",
     "type" : "ore",
-    "slot" : [1,1]
+    "slot" : [1,1],
+    "icon" : [2,6]
   },
   {
     "name": "copper ore",
     "type" : "ore",
-    "slot" : [1,2]
+    "slot" : [1,2],
+    "icon" : [12,2]
   },
   {
     "name": "stone",
     "type" : "ore",
-    "slot" : [1,3]
+    "slot" : [1,3],
+    "icon" : [13,9]
   },
+
+  {
+    "name": "iron ingot",
+    "type" : "component",
+    "icon" : [3,6]
+  },
+  {
+    "name": "copper ingot",
+    "type" : "component",
+    "icon" : [13,2]
+  },
+
+  {
+    "name": "gear",
+    "type" : "component",
+    "icon" : [11,4]
+  },
+
 
   {
     "name": "magnet",
@@ -21,10 +42,16 @@
     "slot": [3,1],
     "icon": [9,6]
   },
+  {
+    "name": "magnetic coil",
+    "type": "component",
+    "icon": [10,6]
+  },
 
   {
     "name": "electric motor",
     "type": "component",
-    "slot": [4,4]
+    "slot": [4,4],
+    "icon": [11,3]
   }
 ]
