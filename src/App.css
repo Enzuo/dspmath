@@ -48,7 +48,12 @@
 }
 
 .item {
-  float: left
+  float: left;
+  margin: 0 5px;
+}
+
+.io h3, .io ul{
+  float:left;
 }
 
 .clearfix {

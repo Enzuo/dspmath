@@ -18,13 +18,13 @@ export default class InputOutput extends React.Component {
     var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add IO to {this.props.planet.name}</button> : null
 
     return (
-      <div>
-        <h3>Inputs :</h3>
+      <div className='io'>
+        <h3>In</h3>
         <ul>
           {listInput}
         </ul>
         <div className='clearfix'></div>
-        <h3>Outputs :</h3>
+        <h3>Out</h3>
         <ul>
           {listOutput}
         </ul>
