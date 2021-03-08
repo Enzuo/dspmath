@@ -23,7 +23,7 @@ export default class Main extends React.Component {
       qtyWanted : 10,
       itemWanted : null,
       remoteProducedItems : [],
-      planets : [],
+      planets : JSON.parse(localStorage.getItem('planets')) || [],
       selectedPlanet : null,
     }
 
@@ -70,10 +70,10 @@ export default class Main extends React.Component {
   }
 
   handlePlanetAdd = (planet) => {
-    this.state.planets.push(planet)
-    this.setState({
-      planets : this.state.planets
-    })
+    var planets = this.state.planets
+    planets.push(planet)
+    this.setState({planets})
+    localStorage.setItem('planets', JSON.stringify(planets))
   }
 
   handlePlanetSelect = (planetId) => {
@@ -100,8 +100,13 @@ export default class Main extends React.Component {
     }
     planet.io.push(io)
 
+    
     this.setState({
       selectedPlanet : planet
     })
+
+    var planets = this.state.planets
+    this.setState({ planets })
+    localStorage.setItem('planets', JSON.stringify(planets))
   }
 }
