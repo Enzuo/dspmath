@@ -38,7 +38,7 @@ export default class Main extends React.Component {
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
-        <ProductionChain chain={productionChain} onItemClick={this.handleNodeClick}></ProductionChain>
+        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick}></ProductionChain>
         <InputOutput d={io} onAdd={this.handleAddIO} planet={this.state.selectedPlanet}></InputOutput>
         <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
         <Planet planet={this.state.selectedPlanet} ></Planet>

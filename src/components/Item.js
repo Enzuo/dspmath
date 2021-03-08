@@ -3,7 +3,7 @@ import React from 'react'
 
 export default class Item extends React.Component {
   static defaultProps = {
-    showFactories : true
+    showName : true
   }
   constructor(props){
     super(props)
@@ -11,17 +11,7 @@ export default class Item extends React.Component {
 
   render() {
 
-    var factories = (
-      <div>
-        factories required :
-        {formatNumber(this.props.m.nbFactory)}
-      </div>
-    )
-    if(this.props.showFactories === false){
-      factories = null
-    }
-
-    var item = this.props.m.item
+    var item = this.props.item
 
     var icon = ''
     if(item.icon){
@@ -44,26 +34,16 @@ export default class Item extends React.Component {
 
     
     return (
-      <div className="material" onClick={this.handleClick}>
+      <div className="item">
         {icon}
         <div>
           {item.name}
         </div>
         <div>
-          {this.props.m.qty} u/s 
+          {this.props.qty} u/s 
         </div>
-        {factories}
       </div>
     )
   }
-
-  handleClick = (e) => {
-    if(this.props.onClick) {
-      this.props.onClick(this.props.m)
-    }
-  }
 }
 
-function formatNumber (nb) {
-  return parseFloat(nb).toFixed(2).replace(/[.,]00$/, "")
-}

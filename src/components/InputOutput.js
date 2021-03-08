@@ -9,10 +9,10 @@ export default class InputOutput extends React.Component {
 
   render () {
     var listInput = this.props.d.inputs.map(function(a){
-      return <Item m={a} showFactories={false}></Item>
+      return <Item item={a.item}></Item>
     })
     var listOutput = this.props.d.outputs.map(function(a){
-      return <Item m={a} showFactories={false}></Item>
+      return <Item item={a.item}></Item>
     })
 
     var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add IO to {this.props.planet.name}</button> : null
