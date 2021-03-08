@@ -13,35 +13,38 @@ export default class Item extends React.Component {
 
     var item = this.props.item
 
-    var icon = ''
+    var icon = this.props.item.name
     if(item.icon){
-      var spriteSize = 64
+      var spriteSize = 24
       var x = item.icon[0] - 1
       var y = item.icon[1] - 1
       var left = x * spriteSize
       var top = y * spriteSize
       var iconStyle = {
-        backgroundImage : 'url(icons.png)',
+        backgroundImage : 'url(icons-24.png)',
         backgroundPosition : 'left -'+left+'px top -'+top+'px',
-        height: '64px',
-        width: '64px'
+        height: spriteSize +'px',
+        width: spriteSize +'px'
       }
       icon = (
-        <div className="icon" style={iconStyle}></div>
+        <div className="icon" title={this.props.item.name} style={iconStyle}></div>
       )
     }
 
+    var name = this.props.showName ? <div>{item.name}</div> : null
 
     
     return (
       <div className="item">
-        {icon}
         <div>
-          {item.name}
+          {icon}
+          <div title='u/s'>
+            {this.props.qty}
+          </div>
         </div>
-        <div>
-          {this.props.qty} u/s 
-        </div>
+
+        {name}
+ 
       </div>
     )
   }

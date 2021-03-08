@@ -41,3 +41,20 @@
   margin:10px;
   border: 1px #333 solid;
 }
+
+
+.icon {
+  margin: 0 auto;
+}
+
+.item {
+  float: left
+}
+
+.clearfix {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}

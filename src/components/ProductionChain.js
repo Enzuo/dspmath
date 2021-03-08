@@ -50,6 +50,7 @@ function Node (props) {
     <div className='node' onClick={(e) => { props.onClick(node) }}>
       <Item item={node.item} qty={node.qty}></Item>
       {factories}
+      <div className='clearfix'></div>
     </div>
   )
 }
