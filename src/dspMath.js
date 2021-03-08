@@ -169,7 +169,7 @@ function toggleRemoteProduceItem(array, item){
   // chainNode.isRemotelyProduced = true;
   var index = array.findIndex(a => a === item.name)
   if(index >= 0){
-    array.splice(index)
+    array.splice(index, 1)
     return array
   }
   array.push(item.name)
