@@ -54,7 +54,7 @@ function recipesCSVToJSON(recipesCSV) {
   return JSON.stringify(csvArray.map(function(row){
     var input = []
     var output = []
-    for(var i=0; i<4; i++){
+    for(var i=0; i<=6; i++){
       if(row['input_'+i+'_qty'] || row['input_'+i+'_name']){
         input.push([parseFloat(row['input_'+i+'_qty']),row['input_'+i+'_name']])
       }

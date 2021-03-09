@@ -17,7 +17,7 @@
     "facility": "smelter"
   },
   {
-    "name": "undefined",
+    "name": "",
     "time": 1,
     "input": [
       [
@@ -245,6 +245,10 @@
       [
         10,
         "hydrogen"
+      ],
+      [
+        1,
+        "titnanium alloy"
       ]
     ],
     "output": [
@@ -256,7 +260,7 @@
     "facility": "assembler"
   },
   {
-    "name": "undefined",
+    "name": "",
     "time": 1.5,
     "input": [
       [
@@ -273,7 +277,7 @@
     "facility": "smelter"
   },
   {
-    "name": "undefined",
+    "name": "",
     "time": 1,
     "input": [
       [
@@ -294,7 +298,268 @@
     "facility": "assembler"
   },
   {
-    "name": "undefined",
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "stone"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "glass"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        1,
+        "energetic graphite"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "diamond"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "diamond (advanced)",
+    "time": 2,
+    "input": [
+      [
+        1,
+        "kimberlite ore"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "diamond"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        1,
+        "high-purity silicon"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "crystal silicon"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "crystal silicon (advanced)",
+    "time": 4,
+    "input": [
+      [
+        1,
+        "fractal silicon"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "crystal silicon"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 12,
+    "input": [
+      [
+        4,
+        "titanium ingot"
+      ],
+      [
+        4,
+        "steel"
+      ],
+      [
+        8,
+        "sulfuric acid"
+      ]
+    ],
+    "output": [
+      [
+        4,
+        "titanium alloy"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        2,
+        "refined oil"
+      ],
+      [
+        1,
+        "energetic graphite"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "plastic"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        2,
+        "plastic"
+      ],
+      [
+        1,
+        "refined oil"
+      ],
+      [
+        1,
+        "water"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "organic crystal"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "organic crystal (original)",
+    "time": 6,
+    "input": [
+      [
+        20,
+        "log"
+      ],
+      [
+        30,
+        "plant fuel"
+      ],
+      [
+        10,
+        "water"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "organic crystal"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        3,
+        "energetic graphite"
+      ],
+      [
+        1,
+        "sulfuric acid"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "graphene"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "fire ice"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "graphene"
+      ],
+      [
+        1,
+        "hydrogen"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        2,
+        "steel"
+      ],
+      [
+        3,
+        "copper ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "thruster"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        3,
+        "iron ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "steel"
+      ]
+    ],
+    "facility": "smelter"
+  },
+  {
+    "name": "",
     "time": 1,
     "input": [
       [
@@ -315,18 +580,18 @@
     "facility": "assembler"
   },
   {
-    "name": "undefined",
-    "time": 1,
+    "name": "",
+    "time": 2,
     "input": [
       [
-        1,
-        "iron ingot"
+        3,
+        "glass"
       ]
     ],
     "output": [
       [
-        1,
-        "gear"
+        2,
+        "prism"
       ]
     ],
     "facility": "assembler"
@@ -357,7 +622,832 @@
     "facility": "assembler"
   },
   {
-    "name": "undefined",
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "high-purity silicon"
+      ],
+      [
+        1,
+        "copper"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "microcrystalline component"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        1,
+        "titanium crystal"
+      ],
+      [
+        2,
+        "graphene"
+      ],
+      [
+        12,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "casimir crystal"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "casimir crystal (advanced)",
+    "time": 4,
+    "input": [
+      [
+        6,
+        "optical grating crystal"
+      ],
+      [
+        2,
+        "graphene"
+      ],
+      [
+        12,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "casimir crystal"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 8,
+    "input": [
+      [
+        2,
+        "particle container"
+      ],
+      [
+        2,
+        "iron ingot"
+      ],
+      [
+        10,
+        "deuterium"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "strange matter"
+      ]
+    ],
+    "facility": "particle collider"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        1,
+        "organic crystal"
+      ],
+      [
+        3,
+        "titanium ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "titanium crystal"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        3,
+        "graphene"
+      ],
+      [
+        1,
+        "titanium ingot"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "carbon nanotube"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "carbon nanotube (advanced)",
+    "time": 4,
+    "input": [
+      [
+        2,
+        "spiniform stalagmite crystal"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "carbon nanotube"
+      ]
+    ],
+    "facility": "chemical plant"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        5,
+        "titanium alloy"
+      ],
+      [
+        5,
+        "electromagnetic turbine"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "reinforced thruster"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 1,
+    "input": [
+      [
+        1,
+        "iron ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "gear"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        4,
+        "magnetic coil"
+      ],
+      [
+        2,
+        "prism"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "plasma exciter"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        2,
+        "prism"
+      ],
+      [
+        1,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "photon combiner"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "electric motor"
+      ],
+      [
+        2,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "electromagnetic turbine"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        2,
+        "circuit board"
+      ],
+      [
+        2,
+        "microcrystalline component"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "processor"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 20,
+    "input": [
+      [
+        1,
+        "particle container"
+      ],
+      [
+        1,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "annihilation constraint sphere"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 5,
+    "input": [
+      [
+        2,
+        "glass"
+      ],
+      [
+        2,
+        "titanium ingot"
+      ],
+      [
+        2,
+        "water"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "titanium glass"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 8,
+    "input": [
+      [
+        2,
+        "carbon nanotube"
+      ],
+      [
+        2,
+        "crystal silicon"
+      ],
+      [
+        1,
+        "plastic"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "particle broadband"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        5,
+        "iron ingot"
+      ],
+      [
+        2,
+        "processor"
+      ],
+      [
+        2,
+        "thruster"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "logistics drone"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 1,
+    "input": [
+      [
+        3,
+        "stone brick"
+      ],
+      [
+        1,
+        "steel"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "foundation"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        2,
+        "electromagnetic turbine"
+      ],
+      [
+        2,
+        "copper ingot"
+      ],
+      [
+        2,
+        "graphene"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "particle container"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "particle container (advanced)",
+    "time": 4,
+    "input": [
+      [
+        10,
+        "unipolar magnet"
+      ],
+      [
+        2,
+        "copper ingot"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "particle container"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        2,
+        "electromagnetic turbine"
+      ],
+      [
+        3,
+        "magnet"
+      ],
+      [
+        1,
+        "energetic graphite"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "super-magnetic ring"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 8,
+    "input": [
+      [
+        4,
+        "diamond"
+      ],
+      [
+        1,
+        "strange matter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "graviton lens"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 10,
+    "input": [
+      [
+        1,
+        "graviton lens"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "space wrapper"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "space wrapper (advanced)",
+    "time": 10,
+    "input": [
+      [
+        1,
+        "gravity matrix"
+      ]
+    ],
+    "output": [
+      [
+        8,
+        "space wrapper"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 12,
+    "input": [
+      [
+        1,
+        "casimir crystal"
+      ],
+      [
+        2,
+        "titanium glass"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "plane filter"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        2,
+        "processor"
+      ],
+      [
+        2,
+        "plane filter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "quantum chip"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        10,
+        "titanium alloy"
+      ],
+      [
+        10,
+        "processor"
+      ],
+      [
+        2,
+        "reinforced thruster"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "logistics vessel"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 3,
+    "input": [
+      [
+        1,
+        "electromagnetic coil"
+      ],
+      [
+        1,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "electromagnetic matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        2,
+        "energetic graphite"
+      ],
+      [
+        2,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "energy matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 8,
+    "input": [
+      [
+        1,
+        "diamond"
+      ],
+      [
+        1,
+        "titanium crystal"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "structure matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 10,
+    "input": [
+      [
+        2,
+        "processor"
+      ],
+      [
+        1,
+        "particle broadband"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "information matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 24,
+    "input": [
+      [
+        1,
+        "graviton lens"
+      ],
+      [
+        1,
+        "quantum chip"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "gravity matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 15,
+    "input": [
+      [
+        1,
+        "electromagnetic matrix"
+      ],
+      [
+        1,
+        "energy matrix"
+      ],
+      [
+        1,
+        "structure matrix"
+      ],
+      [
+        1,
+        "information matrix"
+      ],
+      [
+        1,
+        "gravity matrix"
+      ],
+      [
+        1,
+        "antimatter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "universal matrix"
+      ]
+    ],
+    "facility": "research facility"
+  },
+  {
+    "name": "",
+    "time": 4,
+    "input": [
+      [
+        1,
+        "graphene"
+      ],
+      [
+        1,
+        "photon combiner"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "solar sail"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        4,
+        "carbon nanotube"
+      ],
+      [
+        1,
+        "titanium alloy"
+      ],
+      [
+        1,
+        "high-purity silicon"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "frame material"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 8,
+    "input": [
+      [
+        3,
+        "frame material"
+      ],
+      [
+        3,
+        "solar sail"
+      ],
+      [
+        3,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "dyson sphere component"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
+    "time": 6,
+    "input": [
+      [
+        2,
+        "dyson sphere component"
+      ],
+      [
+        2,
+        "deuteuron fuel road"
+      ],
+      [
+        2,
+        "quantum chip"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "small carrier rocket"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "",
     "time": 1,
     "input": [
       [
