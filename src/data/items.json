@@ -33,12 +33,26 @@
   {
     "name": "iron ingot",
     "type" : "material",
+    "slot": [2,1],
     "icon" : [3,6]
   },
   {
     "name": "copper ingot",
     "type" : "material",
+    "slot": [2,2],
     "icon" : [13,2]
+  },
+  {
+    "name": "stone brick",
+    "type" : "material",
+    "slot": [2,3],
+    "icon" : [12,9]
+  },
+  {
+    "name": "energetic graphite",
+    "type" : "material",
+    "slot" : [2,4],
+    "icon" : [2,5]
   },
 
   {

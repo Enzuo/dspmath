@@ -38,13 +38,26 @@ function computeProductionChain(itemName, qtyNeeded, options, chain, depth, feed
 
   var {recipe, itemIndex} = getRecipeForItem(itemName)
 
+
+
   if (recipe) {
     // time : 2 , out : 1, need : 2
     node.recipe = recipe
 
     var qtyMadePerRecipe = recipe.output[itemIndex][0]
-    // var qtyMadePerSecondPerRecipe = qtyMadePerRecipe / recipe.time
     var qtyRecipeNeeded = qtyNeeded / qtyMadePerRecipe
+
+    // Multi output recipe
+    for(var j=0; j< recipe.output.length; j++){
+      if(j === itemIndex) continue
+      var outputNode = {
+        id : ++nodeId,
+        item : getItemDetails(recipe.output[j][1]),
+        qty : recipe.output[j][0] * qtyRecipeNeeded,
+        depth : depth
+      }
+      chain.push(outputNode)
+    }
   
     for (var i=0; i < recipe.input.length; i++) {
       var neededMaterial = recipe.input[i][1]
@@ -77,12 +90,19 @@ function getItemDetails(itemName) {
 function getRecipeForItem (itemName) {
   var itemIndex
   var recipe = RECIPES.find(function(r){
+    // if item is in input for the recipe we don't want this recipe to produce this item (looking at you hydrogen)
+    for(var i=0; i < r.input.length; i++) {
+      if(r.input[i][1] === itemName){
+        return false
+      }
+    }
     for(var j=0; j < r.output.length; j++) {
       if(r.output[j][1] === itemName){
         itemIndex = j
         return true
       }
     }
+    return false
   });
 
   if(!recipe){
