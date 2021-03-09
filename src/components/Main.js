@@ -71,6 +71,7 @@ export default class Main extends React.Component {
 
   handlePlanetAdd = (planet) => {
     var planets = this.state.planets
+    planet.idTower = 0
     planets.push(planet)
     this.setState({planets})
     localStorage.setItem('planets', JSON.stringify(planets))
@@ -89,8 +90,9 @@ export default class Main extends React.Component {
 
   handleAddIO = (d) => {
     var {inputs, outputs} = d
+    var id = ++this.state.selectedPlanet.idTower
     var io = { 
-      tower : {id: getUid(), name : 'tower'}, 
+      tower : {id: id, name : 'tower '+id}, 
       inputs, 
       outputs
     }

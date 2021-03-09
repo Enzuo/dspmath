@@ -11,7 +11,7 @@ export default class Planet extends React.Component {
     var towerList = io.map((d) => {
       var io = <InputOutput d={d}></InputOutput>
       return (
-        <li>Tower : {d.tower.name}{io}</li>
+        <li>{d.tower.name}{io}</li>
       )
     })
     var totalIo = mergeIO(io)
@@ -78,6 +78,9 @@ function takeInputsFromOutputs (inputs, outputs){
     output.qty -= min;
     input.qty -= min;
   }
+
+  inputs = inputs.filter(a => a.qty !== 0)
+  outputs = outputs.filter(a => a.qty !== 0)
 
   return {inputs, outputs}
 }
