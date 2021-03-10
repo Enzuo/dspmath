@@ -46,9 +46,11 @@ function Node (props) {
     </div>
   )
 
+  var items = node.produces.map(p => <Item item={p.item} qty={p.qty}></Item>)
+
   return (
     <div className='node' onClick={(e) => { props.onClick(node) }}>
-      <Item item={node.item} qty={node.qty}></Item>
+      {items}
       {factories}
       <div className='clearfix'></div>
     </div>

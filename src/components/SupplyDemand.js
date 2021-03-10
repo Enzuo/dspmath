@@ -2,31 +2,31 @@ import React from 'react'
 import Item from './Item'
 
 
-export default class InputOutput extends React.Component {
+export default class SnD extends React.Component {
   constructor(props){
     super(props)
   }
 
   render () {
-    var listInput = this.props.d.inputs.map(function(a){
+    var listSupply = this.props.d.supply.map(function(a){
       return <Item item={a.item} qty={a.qty} showName={false}></Item>
     })
-    var listOutput = this.props.d.outputs.map(function(a){
+    var listDemand = this.props.d.demand.map(function(a){
       return <Item item={a.item} qty={a.qty} showName={false}></Item>
     })
 
-    var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add IO to {this.props.planet.name}</button> : null
+    var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add SnD to {this.props.planet.name}</button> : null
 
     return (
       <div className='io'>
-        <h3>In</h3>
+        <h3>Demand</h3>
         <ul>
-          {listInput}
+          {listDemand}
         </ul>
         <div className='clearfix'></div>
-        <h3>Out</h3>
+        <h3>Supply</h3>
         <ul>
-          {listOutput}
+          {listSupply}
         </ul>
         <div className='clearfix'></div>
         {addToPlanet}
@@ -35,7 +35,7 @@ export default class InputOutput extends React.Component {
   }
 
   handleAddToPlanet = (e) => {
-    var {inputs, outputs} = this.props.d
-    this.props.onAdd({inputs, outputs, planet : this.props.planet})
+    var {supply, demand} = this.props.d
+    this.props.onAdd({supply, demand, planet : this.props.planet})
   }
 }

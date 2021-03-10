@@ -1,7 +1,7 @@
 import React from 'react'
 import ItemSelect from './ItemSelect.js'
 import ProductionChain from './ProductionChain.js'
-import InputOutput from './InputOutput.js'
+import SupplyDemand from './SupplyDemand.js'
 import Planet from './Planet.js'
 import PlanetList from './PlanetList.js'
 import getUid from 'get-uid'
@@ -33,13 +33,13 @@ export default class Main extends React.Component {
   render(){
     var remoteProducedItems = this.state.remoteProducedItems
     var productionChain = DSPMath.getProductionChain(this.state.itemWanted, this.state.qtyWanted, {remoteProducedItems})
-    var io = DSPMath.getIOFromChain(productionChain)
+    var SnD = DSPMath.getSnDFromChain(productionChain)
     return (
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
         <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick}></ProductionChain>
-        <InputOutput d={io} onAdd={this.handleAddIO} planet={this.state.selectedPlanet}></InputOutput>
+        <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
         <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
         <Planet planet={this.state.selectedPlanet} ></Planet>
       </div>
@@ -88,19 +88,19 @@ export default class Main extends React.Component {
     }
   }
 
-  handleAddIO = (d) => {
-    var {inputs, outputs} = d
-    var id = ++this.state.selectedPlanet.idTower
-    var io = { 
-      tower : {id: id, name : 'tower '+id}, 
-      inputs, 
-      outputs
-    }
+  handleAddSnD = (d) => {
+    var {supply, demand} = d
     var planet = d.planet
-    if(!planet.io){
-      planet.io = []
+    var id = ++planet.idTower
+    var SnD = { 
+      tower : {id: id, name : 'tower '+id}, 
+      supply,
+      demand, 
     }
-    planet.io.push(io)
+    if(!planet.SnD){
+      planet.SnD = []
+    }
+    planet.SnD.push(SnD)
 
     
     this.setState({

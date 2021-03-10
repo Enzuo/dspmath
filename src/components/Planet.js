@@ -1,5 +1,5 @@
 import React from 'react'
-import InputOutput from './InputOutput.js'
+import SupplyDemand from './SupplyDemand.js'
 
 
 export default class Planet extends React.Component {
@@ -7,34 +7,34 @@ export default class Planet extends React.Component {
   render () {
     var planet = this.props.planet
     if(!planet) return null
-    var io = planet.io || []
-    var towerList = io.map((d) => {
-      var io = <InputOutput d={d}></InputOutput>
+    var SnD = planet.SnD || []
+    var towerList = SnD.map((d) => {
+      var io = <SupplyDemand d={d}></SupplyDemand>
       return (
         <li>{d.tower.name}{io}</li>
       )
     })
-    var totalIo = mergeIO(io)
+    var totalSnD = mergeSnD(SnD)
     return (
       <div>
         <div>{planet.name}</div>
         <ul>{towerList}</ul>
         Totals :
-        <InputOutput d={totalIo}></InputOutput>
+        <SupplyDemand d={totalSnD}></SupplyDemand>
       </div>
     )
   }
 }
 
 
-function mergeIO (IOarray) {
-  var mergedInputs = mergeTowersIO(IOarray, 'inputs')
-  var mergedOutputs = mergeTowersIO(IOarray, 'outputs')
-  var mergedIos = takeInputsFromOutputs(mergedInputs, mergedOutputs)
+function mergeSnD (IOarray) {
+  var mergedDemand = mergeTowersSnD(IOarray, 'demand')
+  var mergedSupply = mergeTowersSnD(IOarray, 'supply')
+  var mergedIos = takeDemandFromSupply(mergedSupply, mergedDemand)
   return mergedIos
 }
 
-function mergeTowersIO (towerArray, key) {
+function mergeTowersSnD (towerArray, key) {
   var mergedArray = []
 
   for(var i=0; i<towerArray.length; i++) {
@@ -61,28 +61,28 @@ function mergeTowersIO (towerArray, key) {
   return mergedArray
 }
 
-function takeInputsFromOutputs (inputs, outputs){
-  for(var i=0; i<inputs.length; i++){
-    var input = inputs[i]
+function takeDemandFromSupply (supply, demand){
+  for(var i=0; i<demand.length; i++){
+    var dm = demand[i]
     // eslint-disable-next-line no-loop-func
-    var output = outputs.find(output => {
-      if(output.item.name === input.item.name){
+    var sup = supply.find(output => {
+      if(output.item.name === dm.item.name){
         return true
       }
       return false
     })
 
-    if(!output) continue
+    if(!sup) continue
 
-    var min = Math.min(output.qty, input.qty)
-    output.qty -= min;
-    input.qty -= min;
+    var min = Math.min(sup.qty, dm.qty)
+    sup.qty -= min;
+    dm.qty -= min;
   }
 
-  inputs = inputs.filter(a => a.qty !== 0)
-  outputs = outputs.filter(a => a.qty !== 0)
+  demand = demand.filter(a => a.qty !== 0)
+  supply = supply.filter(a => a.qty !== 0)
 
-  return {inputs, outputs}
+  return {demand, supply}
 }
 
 function clone(obj) {
