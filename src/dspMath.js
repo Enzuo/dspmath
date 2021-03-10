@@ -13,7 +13,6 @@ const RECIPES   = require('./data/recipes.json')
  */
 var nodeId = 0;
 function computeProductionChain(itemName, qtyDemand, options, chain, depth, demandNodeId) {
-  console.log('addProductionChain', itemName)
   chain = chain ? chain : []
   depth = depth ? depth + 1 : 1
   var id = ++nodeId
@@ -119,10 +118,6 @@ function outputForRecipe(recipe, qty, item){
 function addSupplyFromChain(itemName, qtyDemand, options, chain, depth, demandNodeId){
 
   var nodes = chain.reduce((arr, node) => {   
-    // cannot demand from himself TODO or can we ?
-    if(demandNodeId === node.id) {
-      return arr
-    }
 
     var item = node.produces.find(a => {
       return a.item.name === itemName ? true : false
@@ -285,6 +280,19 @@ function getSnDFromChain(chain){
     }, [])
     // TODO remove double on concat
     return arr.concat(production)
+  }, [])
+
+  // remove double
+  supply = supply.reduce((acc, p) => {
+    var item = acc.find(sup => {
+      return sup.item.name === p.item.name
+    })
+    if(item){
+      item.qty += p.qty
+      return acc
+    }
+    acc.push(p)
+    return acc
   }, [])
 
   demand = chain.reduce((arr, node) => {
