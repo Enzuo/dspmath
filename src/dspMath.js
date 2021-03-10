@@ -64,17 +64,19 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
     var qtyMadePerRecipe = recipe.output[itemIndex][0]
     var qtyRecipe = qtyDemand / qtyMadePerRecipe
 
-    node.qtyRecipe = qtyRecipe
-
+    
+    // addFactory
+    var factory = getFactoryForRecipe(recipe)
+    node.factory = factory.name
+    var nbFactory = Math.ceil((qtyRecipe / factory.ratio) * recipe.time)
+    node.nbFactory = nbFactory
+    
+    // update qtyRecipe with nb factory
+    // qtyRecipe = (nbFactory * factory.ratio) / recipe.time
+    // node.qtyRecipe = qtyRecipe
+    
     // Multi output recipe
-    var producedItems = []
-    for(var j=0; j< recipe.output.length; j++){
-      producedItems.push({
-        item : getItemDetails(recipe.output[j][1]),
-        qty : recipe.output[j][0] * qtyRecipe,
-      })
-    }
-    node.produces = producedItems
+    node.produces = outputForRecipe(recipe, qtyRecipe)
   
     for (var i=0; i < recipe.input.length; i++) {
       let itemDemand = recipe.input[i][1]
@@ -112,17 +114,6 @@ function outputForRecipe(recipe, qty){
  * @returns {Number} qty added from current supply chain
  */
 function addSupplyFromChain(itemName, qtyDemand, options, chain, depth, demandNodeId){
-  // find all nodes producing this item with unused item
-  // var nodes = chain.filter(node => {
-  //   var item = node.items.find(item => {
-  //     return item.name === itemName ? true : false
-  //   })
-  //   return item ? true : false
-  // })
-
-  // if(!nodes.length){
-  //   return 0
-  // }
 
   var nodes = chain.reduce((arr, node) => {   
     // cannot demand from himself TODO or can we ?
@@ -208,6 +199,10 @@ function getRecipeForItem (itemName) {
   return {recipe, itemIndex}
 }
 
+function getFactoryForRecipe(recipe) {
+  return {name : 'unknow', ratio : 1}
+}
+
 function mergeProductionChainNodes(chain) {
   var newChain = []
   for(var i=0; i<chain.length; i++) {
@@ -220,13 +215,6 @@ function mergeProductionChainNodes(chain) {
 
     if(!mergedNode){
       mergedNode = clone(node)
-      // mergedNode.depth =
-      // if(mergedMaterial.feedNodeId){
-      //   mergedMaterial.feedNodes = [[mergedMaterial.feedNodeId, mergedMaterial.qty]]
-      // }
-      // else {
-      //   mergedMaterial.feedNodes = []
-      // }
       newChain.push(mergedNode)
     }
     else {
@@ -235,11 +223,6 @@ function mergeProductionChainNodes(chain) {
       mergedNode.produces = outputForRecipe(mergedNode.recipe, mergedNode.qtyRecipe)
       mergedNode.supplyNodes.concat(node.supplyNodes)
     }
-    // mergedMaterial.qty += material.qty
-    // mergedMaterial.depth.push(material.depth)
-    // if(material.feedNodeId){
-    //   mergedMaterial.feedNodes.push([material.feedNodeId, material.qty])
-    // }
   }
 
   return newChain
@@ -249,37 +232,13 @@ function clone(obj) {
   return JSON.parse(JSON.stringify(obj))
 }
 
-function addNeededFactories (productionChain) {
-  for(var i=0; i<productionChain.length; i++) {
-    var itemObj = productionChain[i]
-    
-    var factory
-    if(itemObj.recipe){
-
-      var recipe = itemObj.recipe
-      factory = factories.find(function(a){
-        if(a.type === recipe.facility){
-          return true
-        }
-      })
-      var factoryRatio = factory ? factory.ratio : 1       
-      itemObj.factory = factory ? factory.name : 'unknow'
-
-      itemObj.nbFactory = (itemObj.qty * recipe.time)/factoryRatio
-    }
-    
-  }
-
-  return productionChain
-}
-
 
 function getProductionChain(item, qty, options){
   var rawChain = computeProductionChain(item, qty, options)
   console.log("raw production chain", rawChain)
 
-  var mergedChain = mergeProductionChainNodes(rawChain)
-  var productionChain = addNeededFactories(mergedChain)
+  var productionChain = mergeProductionChainNodes(rawChain)
+  // var productionChain = addNeededFactories(mergedChain)
   
   console.log("merged production chain", productionChain)
   return productionChain
@@ -302,34 +261,53 @@ function toggleRemoteProduceItem(array, item){
   return array
 }
 
-function getIOFromChain(chain){
-  var inputs = []
-  var outputs = []
-  for(var i=0; i<chain.length; i++){
-    var item = chain[i]
-    if(!item.feedNodes || !item.feedNodes.length){
-      outputs.push(item)
-      continue
-    }
-    // if item is fed by any other node then it's not an input
-    var fedByNode = chain.find((node) => {
-      for(var j=0; j<node.feedNodes.length; j++){
-        if(node.feedNodes[j][0] === item.id){
+function getSnDFromChain(chain){
+  var supply = []
+  var demand = []
+  supply = chain.reduce((arr, node) => {
+    var production = node.produces.reduce((productionArray, produced) => {
+      var qtyUsed = node.supplyNodes.reduce((qty, n) => {
+        if(n.item === produced.item.name){
+          return qty + n.qty
+        }
+        return qty
+      }, 0)
+      var qtyUnused = produced.qty - qtyUsed
+      if(qtyUnused){
+        productionArray.push({item : clone(produced.item), qty : qtyUnused})
+        return productionArray
+      }
+      return productionArray
+    }, [])
+    // TODO remove double on concat
+    return arr.concat(production)
+  }, [])
+
+  demand = chain.reduce((arr, node) => {
+    // if node is supplied by any other node then it's not an input
+    var suppliedBy = chain.find((n) => {
+      if(!n.supplyNodes){
+        return false
+      }
+      for(var j=0; j<n.supplyNodes.length; j++){
+        if(n.supplyNodes[j].id === node.id){
           return true
         }
       }
       return false
     })
-    if(!fedByNode){
-      inputs.push(item)
+    if(!suppliedBy){
+      var production = node.produces[0]
+      arr.push({ item : clone(production.item), qty : production.qty})
     }
-  }
+    return arr
+  }, [])
 
-  return {inputs, outputs}
+  return { supply, demand }
 }
 
 export default {
   getProductionChain,
   toggleRemoteProduceItem,
-  getIOFromChain,
+  getSnDFromChain,
 }
