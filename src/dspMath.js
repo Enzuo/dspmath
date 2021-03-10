@@ -92,7 +92,10 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   return chain
 }
 
-function outputForRecipe(recipe, qty){
+function outputForRecipe(recipe, qty, item){
+  if(!recipe.output){
+    return [{ item, qty }]
+  }
   var producedItems = []
   for(var j=0; j< recipe.output.length; j++){
     producedItems.push({
@@ -220,8 +223,9 @@ function mergeProductionChainNodes(chain) {
     else {
       mergedNode.qtyRecipe += node.qtyRecipe
       mergedNode.depth = Math.max(mergedNode.depth, node.depth)
-      mergedNode.produces = outputForRecipe(mergedNode.recipe, mergedNode.qtyRecipe)
-      mergedNode.supplyNodes.concat(node.supplyNodes)
+      mergedNode.nbFactory += node.nbFactory
+      mergedNode.produces = outputForRecipe(mergedNode.recipe, mergedNode.qtyRecipe, mergedNode.produces[0].item)
+      mergedNode.supplyNodes = mergedNode.supplyNodes.concat(node.supplyNodes)
     }
   }
 

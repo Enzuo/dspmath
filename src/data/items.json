@@ -18,6 +18,12 @@
     "icon" : [13,9]
   },
   {
+    "name": "titanium ore",
+    "type" : "ore",
+    "slot" : [1,6],
+    "icon" : [12,10]
+  },
+  {
     "name": "crude oil",
     "type": "material",
     "slot": [1,8],
@@ -54,6 +60,18 @@
     "slot" : [2,4],
     "icon" : [2,5]
   },
+  {
+    "name": "high-purity silicon",
+    "type" : "material",
+    "slot" : [2,5],
+    "icon" : [3,9]
+  },
+  {
+    "name": "titanium ingot",
+    "type" : "material",
+    "slot" : [2,6],
+    "icon" : [13,10]
+  },
 
   {
     "name": "sulfuric acid",
@@ -85,7 +103,14 @@
   {
     "name": "magnetic coil",
     "type": "component",
+    "slot":[3,2],
     "icon": [10,6]
+  },
+  {
+    "name": "titanium alloy",
+    "type": "component",
+    "slot":[3,6],
+    "icon": [11,10]
   },
 
   {
