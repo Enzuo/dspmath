@@ -16,7 +16,7 @@ class ProductionChain extends React.Component {
 
     const listItem = chain.map((node) => {
       return (
-        <Node node={node} onClick={this.handleNodeClick} onItemClick={this.handleItemClick}></Node>
+        <Node node={node} onClick={this.handleNodeClick} onItemClick={this.handleItemClick} onRecipeClick={this.handleRecipeClick} opts={this.props.opts}></Node>
       )
     }
     );
@@ -40,6 +40,13 @@ class ProductionChain extends React.Component {
       this.props.onRemoveItem(item)
     }
   }
+
+  handleRecipeClick = (recipe) => {
+    console.log('click on recipe', recipe)
+    if(this.props.onPickRecipe){
+      this.props.onPickRecipe(recipe)
+    }
+  }
 }
 
 function Node (props) {
@@ -55,10 +62,20 @@ function Node (props) {
 
   var items = node.produces.map(p => <Item item={p.item} qty={p.qty} onClick={props.onItemClick}></Item>)
 
+  var recipes
+  if (node.allRecipes && node.allRecipes.length > 1){
+    recipes = node.allRecipes.map(r => {
+      var inputs = r.input.map(a => '  ' + a[0] + ' '+ a[1])
+      var selected = props.opts.priorityRecipes.includes(r.name) ? 'selected' : ''
+      return <li className={selected} title={r.name + inputs} onClick={(e) => { props.onRecipeClick(r) }}>⚙️</li>
+    })
+  }
+
   return (
     <div className='node' onClick={(e) => { props.onClick(node) }}>
       {items}
       {factories}
+      {recipes}
       <div className='clearfix'></div>
     </div>
   )

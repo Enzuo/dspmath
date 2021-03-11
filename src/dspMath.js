@@ -17,6 +17,7 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   depth = depth ? depth + 1 : 1
   var id = ++nodeId
   var remoteProducedItems = options ? options.remoteProducedItems : [];
+  var priorityRecipes = options ? options.priorityRecipes : [];
   
   if(!qtyDemand) {
     return chain
@@ -28,7 +29,7 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   
 
   // TODO move down, merge with remoteProduced items ?
-  var {recipe, itemIndex} = getRecipeForItem(itemName)
+  var {recipe, itemIndex, allRecipes} = getRecipeForItem(itemName, options)
 
   var supplyNodes = []
   if(demandNodeId){
@@ -44,6 +45,7 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
     id,
     depth,
     recipe,
+    allRecipes,
     qtyRecipe : qtyDemand,
     produces : [{ item : getItemDetails(itemName), qty : qtyDemand }],
     supplyNodes,
@@ -172,9 +174,9 @@ function getItemDetails(itemName) {
   return clone(item)
 }
 
-function getRecipeForItem (itemName) {
+function getRecipeForItem (itemName, options) {
   var itemIndex
-  var recipe = RECIPES.find(function(r){
+  var allRecipes = RECIPES.filter(function(r){
     // if item is in input for the recipe we don't want to pick this recipe to produce this item (looking at you hydrogen)
     for(var i=0; i < r.input.length; i++) {
       if(r.input[i][1] === itemName){
@@ -190,11 +192,23 @@ function getRecipeForItem (itemName) {
     return false
   });
 
+  var priorityRecipes = options && options.priorityRecipes ? options.priorityRecipes : [];
+  // pick priority recipe first
+  var recipe = allRecipes.find(r => {
+    return priorityRecipes.includes(r.name)
+  })
+
+  // if no priority recipe pick the first one
+  if(!recipe){
+    recipe = allRecipes[0]
+  }
+
+  // if no recipe item itself is the recipe
   if(!recipe){
     return {recipe: {name: itemName}}
   }
 
-  return {recipe, itemIndex}
+  return {recipe, itemIndex, allRecipes}
 }
 
 function getFactoryForRecipe(recipe) {
@@ -271,6 +285,10 @@ function toggleRemoteProduceItem(array, item){
   return array
 }
 
+function togglePriorityRecipe(array, recipe){
+  return toggleRemoteProduceItem(array, recipe)
+}
+
 function getSnDFromChain(chain){
   var supply = []
   var demand = []
@@ -332,5 +350,6 @@ function getSnDFromChain(chain){
 export default {
   getProductionChain,
   toggleRemoteProduceItem,
+  togglePriorityRecipe,
   getSnDFromChain,
 }

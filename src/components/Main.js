@@ -23,6 +23,7 @@ export default class Main extends React.Component {
       qtyWanted : 10,
       itemWanted : null,
       remoteProducedItems : [],
+      priorityRecipes : [],
       planets : JSON.parse(localStorage.getItem('planets')) || [],
       selectedPlanet : null,
     }
@@ -31,14 +32,16 @@ export default class Main extends React.Component {
   }
 
   render(){
-    var remoteProducedItems = this.state.remoteProducedItems
-    var productionChain = DSPMath.getProductionChain(this.state.itemWanted, this.state.qtyWanted, {remoteProducedItems})
+    var {remoteProducedItems, priorityRecipes} = this.state
+    var opts = {remoteProducedItems, priorityRecipes}
+    var productionChain = DSPMath.getProductionChain(this.state.itemWanted, this.state.qtyWanted, opts)
     var SnD = DSPMath.getSnDFromChain(productionChain)
     return (
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
-        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem}></ProductionChain>
+        {priorityRecipes}
+        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
         <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
         <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
         <Planet planet={this.state.selectedPlanet} ></Planet>
@@ -75,6 +78,13 @@ export default class Main extends React.Component {
       remoteProducedItems
     })
   }
+
+  handlePickRecipe = (recipe) => {
+    var priorityRecipes = DSPMath.togglePriorityRecipe(this.state.priorityRecipes, recipe)
+    this.setState({
+      priorityRecipes
+    })
+  } 
 
   handlePlanetAdd = (planet) => {
     var planets = this.state.planets
