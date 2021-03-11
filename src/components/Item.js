@@ -35,7 +35,7 @@ export default class Item extends React.Component {
 
     
     return (
-      <div className="item">
+      <div className="item" onClick={this.handleClick}>
         <div>
           {icon}
           <div title='u/s'>
@@ -47,6 +47,12 @@ export default class Item extends React.Component {
  
       </div>
     )
+  }
+
+  handleClick = () => {
+    if(this.props.onClick){
+      return this.props.onClick(this.props.item)
+    }
   }
 }
 

@@ -16,7 +16,7 @@ class ProductionChain extends React.Component {
 
     const listItem = chain.map((node) => {
       return (
-        <Node node={node} onClick={this.handleNodeClick}></Node>
+        <Node node={node} onClick={this.handleNodeClick} onItemClick={this.handleItemClick}></Node>
       )
     }
     );
@@ -29,8 +29,15 @@ class ProductionChain extends React.Component {
     // var node = e.currentTarget.getAttribute('data')
     // console.log('click on node', node, e.currentTarget, e.target)
     console.log('click on node', node)
-    if(this.props.onNodeClick){
-      this.props.onNodeClick(node)
+    // if(this.props.onNodeClick){
+    //   this.props.onNodeClick(node)
+    // }
+  }
+
+  handleItemClick = (item) => {
+    console.log('click on item', item)
+    if(this.props.onRemoveItem){
+      this.props.onRemoveItem(item)
     }
   }
 }
@@ -46,7 +53,7 @@ function Node (props) {
     </div>
   )
 
-  var items = node.produces.map(p => <Item item={p.item} qty={p.qty}></Item>)
+  var items = node.produces.map(p => <Item item={p.item} qty={p.qty} onClick={props.onItemClick}></Item>)
 
   return (
     <div className='node' onClick={(e) => { props.onClick(node) }}>

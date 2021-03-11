@@ -38,7 +38,7 @@ export default class Main extends React.Component {
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
-        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick}></ProductionChain>
+        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem}></ProductionChain>
         <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
         <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
         <Planet planet={this.state.selectedPlanet} ></Planet>
@@ -64,6 +64,13 @@ export default class Main extends React.Component {
     var item = node.item
     var remoteProducedItems = DSPMath.toggleRemoteProduceItem(this.state.remoteProducedItems, item)
     console.log('remote produced items : ',remoteProducedItems)
+    this.setState({
+      remoteProducedItems
+    })
+  }
+
+  handleRemoveItem = (item) => {
+    var remoteProducedItems = DSPMath.toggleRemoteProduceItem(this.state.remoteProducedItems, item)
     this.setState({
       remoteProducedItems
     })

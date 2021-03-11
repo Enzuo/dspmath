@@ -235,17 +235,17 @@ function clone(obj) {
 function getProductionChain(item, qty, options){
   var rawChain = computeProductionChain(item, qty, options)
   // console.log("raw production chain", rawChain)
-  var filteredChain = rawChain.filter(a => {
-    var lfItem = 'hydrogen'
-    if(a.recipe && a.recipe.output && a.recipe.output.find(b => b[1] === lfItem)){
-      return true
-    }
-    if(a.recipe && a.recipe.input && a.recipe.input.find(b => b[1] === lfItem)){
-      return true
-    }
-    return false
-  })
-  console.log("raw production chain", JSON.stringify(filteredChain, null, 2))
+  // var filteredChain = rawChain.filter(a => {
+  //   var lfItem = 'hydrogen'
+  //   if(a.recipe && a.recipe.output && a.recipe.output.find(b => b[1] === lfItem)){
+  //     return true
+  //   }
+  //   if(a.recipe && a.recipe.input && a.recipe.input.find(b => b[1] === lfItem)){
+  //     return true
+  //   }
+  //   return false
+  // })
+  // console.log("raw production chain", JSON.stringify(filteredChain, null, 2))
 
   var productionChain = mergeProductionChainNodes(rawChain)
   // var productionChain = addNeededFactories(mergedChain)
