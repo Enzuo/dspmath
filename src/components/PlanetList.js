@@ -1,6 +1,7 @@
 import React from 'react'
 import getUid from 'get-uid'
 import './PlanetList.css'
+import Button from './Button'
 
 
 export default class Planets extends React.Component {
@@ -19,9 +20,17 @@ export default class Planets extends React.Component {
       return <PlanetCard name={planet.name} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
     })
     return (
-      <div>
-        <ul className='flex p-3'>{planets}</ul>
-        <input value={this.state.newName} onChange={e => this.setState({ newName : e.target.value})}></input><button onClick={this.handleAdd}>Add</button>
+      <div className='max-w-md'>
+        <h3 className="text-xl">Planets</h3>
+        <div className="p-5 flex-auto flex space-x-3">
+          <img className='h-12 w-12' src="/planets/3LXleaA.png" alt="Planet type"></img>
+          <input 
+            className='border border-transparent  flex-1 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
+            value={this.state.newName} onChange={e => this.setState({ newName : e.target.value})}>
+          </input>
+          <Button onClick={this.handleAdd}>Add</Button>
+        </div>
+        <ul className='p-3'>{planets}</ul>
       </div>
     )
   }
@@ -40,15 +49,15 @@ export default class Planets extends React.Component {
 
 
 function PlanetCard(props){
-  var selectedClass = 'bg-purple-100'
+  var selectedClass = 'bg-purple-50'
   var className = props.selected ? selectedClass : null
   return (
-    <div className={'p-3 max-w-xs mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4 '+className} onClick={(e) => props.onClick(props.id)}>
+    <div className={'p-2 m-0.5 mx-auto bg-white shadow-md flex items-center space-x-4 hover:bg-purple-100 '+className} onClick={(e) => props.onClick(props.id)}>
       <div className="flex-shrink-0">
         <img className='h-12 w-12' src="/planets/3LXleaA.png" alt="Planet type"></img>
       </div>
       <div>
-        <div className="text-xl font-medium text-black">{props.name}</div>
+        <div className="text-md font-medium text-black">{props.name}</div>
       </div>
     </div>
   )

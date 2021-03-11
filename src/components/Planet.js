@@ -11,13 +11,19 @@ export default class Planet extends React.Component {
     var towerList = SnD.map((d) => {
       var io = <SupplyDemand d={d}></SupplyDemand>
       return (
-        <li>{d.tower.name}{io}</li>
+        <div className='p-6 max-w-sm mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4'>
+          <div>
+            <div className="text-xl font-medium text-black">{d.tower.name}</div>
+            <p className="text-gray-500">{io}</p>
+          </div>
+          
+        </div>
       )
     })
     var totalSnD = mergeSnD(SnD)
     return (
-      <div>
-        <div>{planet.name}</div>
+      <div className="flex-1">
+        <h3 className='text-xl'>{planet.name}</h3>
         <ul>{towerList}</ul>
         Totals :
         <SupplyDemand d={totalSnD}></SupplyDemand>

@@ -43,8 +43,10 @@ export default class Main extends React.Component {
         {priorityRecipes}
         <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
         <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
-        <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
-        <Planet planet={this.state.selectedPlanet} ></Planet>
+        <div className='flex'>
+          <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
+          <Planet planet={this.state.selectedPlanet} ></Planet>
+        </div>
       </div>
     )
   }

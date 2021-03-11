@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 import Item from './Item'
 
 
@@ -15,7 +16,7 @@ export default class SnD extends React.Component {
       return <Item item={a.item} qty={a.qty} showName={false}></Item>
     })
 
-    var addToPlanet = this.props.planet ? <button onClick={this.handleAddToPlanet}>Add SnD to {this.props.planet.name}</button> : null
+    var addToPlanet = this.props.planet ? <Button onClick={this.handleAddToPlanet}>Add SnD to {this.props.planet.name}</Button> : null
 
     return (
       <div className='io'>
