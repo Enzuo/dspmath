@@ -72,7 +72,7 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
     
     // addFactory
     var factory = getFactoryForRecipe(recipe)
-    node.factory = factory.name
+    node.factory = factory
     var nbFactory = Math.ceil((qtyRecipe / factory.ratio) * recipe.time)
     node.nbFactory = nbFactory
     
@@ -216,6 +216,13 @@ function getRecipeForItem (itemName, options) {
 }
 
 function getFactoryForRecipe(recipe) {
+  var facility = recipe.facility
+  var factory = ITEMS.find(item => {
+    return item.subtype === recipe.facility
+  })
+  if(factory){
+    return factory
+  }
   return {name : recipe.facility, ratio : 1}
 }
 

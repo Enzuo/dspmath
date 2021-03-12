@@ -182,11 +182,26 @@
     "type": "component",
     "slot": [7,11],
     "icon": [12,8]
-  }
+  },
 
   
 
-
+  {
+    "name" : "assembler mkI",
+    "type" : "building",
+    "subtype" : "assembler",
+    "ratio": 0.75,
+    "slot" : [1,1],
+    "icon" : [11,1]
+  },
+  {
+    "name" : "assembler mkII",
+    "type" : "building",
+    "subtype" : "assembler",
+    "ratio": 1,
+    "slot" : [1,1],
+    "icon" : [12,1]
+  }
 
 
   

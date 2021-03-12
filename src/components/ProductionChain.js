@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 
 import Item from './Item'
 
@@ -76,7 +77,7 @@ function Node (props) {
 
   var factories = node.nbFactory ? (
     <div>
-      {node.nbFactory} {node.factory}
+      {node.nbFactory} <Icon item={node.factory}></Icon>
     </div>
   ) : null
 
