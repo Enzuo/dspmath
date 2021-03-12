@@ -1,6 +1,61 @@
 [
   {
-    "name": "iron ingot0",
+    "name": "deuterium mkIII",
+    "time": 10,
+    "input": [
+      [
+        3,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        3,
+        "deuterium"
+      ]
+    ],
+    "facility": "fractionator"
+  },
+  {
+    "name": "deuterium1",
+    "time": 5,
+    "input": [
+      [
+        10,
+        "hydrogen"
+      ]
+    ],
+    "output": [
+      [
+        5,
+        "deuterium"
+      ]
+    ],
+    "facility": "particle collider"
+  },
+  {
+    "name": "antimatter2",
+    "time": 2,
+    "input": [
+      [
+        2,
+        "critical photon"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "antimatter"
+      ],
+      [
+        2,
+        "hydrogen"
+      ]
+    ],
+    "facility": "particle collider"
+  },
+  {
+    "name": "iron ingot4",
     "time": 1,
     "input": [
       [
@@ -17,7 +72,7 @@
     "facility": "smelter"
   },
   {
-    "name": "copper ingot1",
+    "name": "copper ingot5",
     "time": 1,
     "input": [
       [
@@ -34,7 +89,7 @@
     "facility": "smelter"
   },
   {
-    "name": "stone brick2",
+    "name": "stone brick6",
     "time": 1,
     "input": [
       [
@@ -76,7 +131,7 @@
     "facility": "oil refinery"
   },
   {
-    "name": "energetic graphite4",
+    "name": "energetic graphite8",
     "time": 2,
     "input": [
       [
@@ -93,7 +148,7 @@
     "facility": "smelter"
   },
   {
-    "name": "high-purity silicon5",
+    "name": "high-purity silicon9",
     "time": 2,
     "input": [
       [
@@ -110,7 +165,7 @@
     "facility": "smelter"
   },
   {
-    "name": "titanium ingot6",
+    "name": "titanium ingot10",
     "time": 2,
     "input": [
       [
@@ -127,7 +182,7 @@
     "facility": "smelter"
   },
   {
-    "name": "sulfuric acid7",
+    "name": "sulfuric acid11",
     "time": 1.2,
     "input": [],
     "output": [
@@ -139,7 +194,7 @@
     "facility": "water pump"
   },
   {
-    "name": "sulfuric acid8",
+    "name": "sulfuric acid12",
     "time": 6,
     "input": [
       [
@@ -185,7 +240,7 @@
     "facility": "oil refinery"
   },
   {
-    "name": "hydrogen fuel rod10",
+    "name": "hydrogen fuel rod14",
     "time": 3,
     "input": [
       [
@@ -206,7 +261,7 @@
     "facility": "assembler"
   },
   {
-    "name": "deuteron fuel rod11",
+    "name": "deuteron fuel rod15",
     "time": 6,
     "input": [
       [
@@ -231,7 +286,7 @@
     "facility": "assembler"
   },
   {
-    "name": "antimatter fuel rod12",
+    "name": "antimatter fuel rod16",
     "time": 12,
     "input": [
       [
@@ -260,7 +315,7 @@
     "facility": "assembler"
   },
   {
-    "name": "magnet14",
+    "name": "magnet18",
     "time": 1.5,
     "input": [
       [
@@ -277,7 +332,7 @@
     "facility": "smelter"
   },
   {
-    "name": "magnetic coil15",
+    "name": "magnetic coil19",
     "time": 1,
     "input": [
       [
@@ -298,7 +353,7 @@
     "facility": "assembler"
   },
   {
-    "name": "glass16",
+    "name": "glass20",
     "time": 2,
     "input": [
       [
@@ -315,7 +370,7 @@
     "facility": "smelter"
   },
   {
-    "name": "diamond17",
+    "name": "diamond21",
     "time": 2,
     "input": [
       [
@@ -349,7 +404,7 @@
     "facility": "smelter"
   },
   {
-    "name": "crystal silicon19",
+    "name": "crystal silicon23",
     "time": 2,
     "input": [
       [
@@ -383,7 +438,7 @@
     "facility": "assembler"
   },
   {
-    "name": "titanium alloy21",
+    "name": "titanium alloy25",
     "time": 12,
     "input": [
       [
@@ -408,7 +463,7 @@
     "facility": "smelter"
   },
   {
-    "name": "plastic22",
+    "name": "plastic26",
     "time": 3,
     "input": [
       [
@@ -429,7 +484,7 @@
     "facility": "chemical plant"
   },
   {
-    "name": "organic crystal23",
+    "name": "organic crystal27",
     "time": 6,
     "input": [
       [
@@ -479,7 +534,7 @@
     "facility": "assembler"
   },
   {
-    "name": "graphene25",
+    "name": "graphene29",
     "time": 3,
     "input": [
       [
@@ -500,7 +555,7 @@
     "facility": "chemical plant"
   },
   {
-    "name": "graphene26",
+    "name": "graphene30",
     "time": 2,
     "input": [
       [
@@ -521,7 +576,7 @@
     "facility": "chemical plant"
   },
   {
-    "name": "thruster27",
+    "name": "thruster31",
     "time": 4,
     "input": [
       [
@@ -542,7 +597,7 @@
     "facility": "assembler"
   },
   {
-    "name": "steel29",
+    "name": "steel33",
     "time": 3,
     "input": [
       [
@@ -559,7 +614,7 @@
     "facility": "smelter"
   },
   {
-    "name": "circuit board30",
+    "name": "circuit board34",
     "time": 1,
     "input": [
       [
@@ -580,7 +635,7 @@
     "facility": "assembler"
   },
   {
-    "name": "prism31",
+    "name": "prism35",
     "time": 2,
     "input": [
       [
@@ -597,7 +652,7 @@
     "facility": "assembler"
   },
   {
-    "name": "electric motor32",
+    "name": "electric motor36",
     "time": 2,
     "input": [
       [
@@ -622,7 +677,7 @@
     "facility": "assembler"
   },
   {
-    "name": "microcrystalline component33",
+    "name": "microcrystalline component37",
     "time": 2,
     "input": [
       [
@@ -643,7 +698,7 @@
     "facility": "assembler"
   },
   {
-    "name": "casimir crystal34",
+    "name": "casimir crystal38",
     "time": 4,
     "input": [
       [
@@ -693,7 +748,7 @@
     "facility": "assembler"
   },
   {
-    "name": "strange matter36",
+    "name": "strange matter40",
     "time": 8,
     "input": [
       [
@@ -718,7 +773,7 @@
     "facility": "particle collider"
   },
   {
-    "name": "titanium crystal37",
+    "name": "titanium crystal41",
     "time": 4,
     "input": [
       [
@@ -739,7 +794,7 @@
     "facility": "assembler"
   },
   {
-    "name": "carbon nanotube38",
+    "name": "carbon nanotube42",
     "time": 4,
     "input": [
       [
@@ -777,7 +832,7 @@
     "facility": "chemical plant"
   },
   {
-    "name": "reinforced thruster40",
+    "name": "reinforced thruster44",
     "time": 6,
     "input": [
       [
@@ -798,7 +853,7 @@
     "facility": "assembler"
   },
   {
-    "name": "gear42",
+    "name": "gear46",
     "time": 1,
     "input": [
       [
@@ -815,7 +870,7 @@
     "facility": "assembler"
   },
   {
-    "name": "plasma exciter43",
+    "name": "plasma exciter47",
     "time": 2,
     "input": [
       [
@@ -836,7 +891,7 @@
     "facility": "assembler"
   },
   {
-    "name": "photon combiner44",
+    "name": "photon combiner48",
     "time": 3,
     "input": [
       [
@@ -857,7 +912,7 @@
     "facility": "assembler"
   },
   {
-    "name": "electromagnetic turbine45",
+    "name": "electromagnetic turbine49",
     "time": 2,
     "input": [
       [
@@ -878,7 +933,7 @@
     "facility": "assembler"
   },
   {
-    "name": "processor46",
+    "name": "processor50",
     "time": 3,
     "input": [
       [
@@ -899,7 +954,7 @@
     "facility": "assembler"
   },
   {
-    "name": "annihilation constraint sphere47",
+    "name": "annihilation constraint sphere51",
     "time": 20,
     "input": [
       [
@@ -920,7 +975,7 @@
     "facility": "assembler"
   },
   {
-    "name": "titanium glass48",
+    "name": "titanium glass52",
     "time": 5,
     "input": [
       [
@@ -945,7 +1000,7 @@
     "facility": "assembler"
   },
   {
-    "name": "particle broadband49",
+    "name": "particle broadband53",
     "time": 8,
     "input": [
       [
@@ -970,7 +1025,7 @@
     "facility": "assembler"
   },
   {
-    "name": "logistics drone50",
+    "name": "logistics drone54",
     "time": 4,
     "input": [
       [
@@ -995,7 +1050,7 @@
     "facility": "assembler"
   },
   {
-    "name": "foundation52",
+    "name": "foundation56",
     "time": 1,
     "input": [
       [
@@ -1016,7 +1071,7 @@
     "facility": "assembler"
   },
   {
-    "name": "particle container53",
+    "name": "particle container57",
     "time": 4,
     "input": [
       [
@@ -1062,7 +1117,7 @@
     "facility": "assembler"
   },
   {
-    "name": "super-magnetic ring55",
+    "name": "super-magnetic ring59",
     "time": 3,
     "input": [
       [
@@ -1087,7 +1142,7 @@
     "facility": "assembler"
   },
   {
-    "name": "graviton lens56",
+    "name": "graviton lens60",
     "time": 8,
     "input": [
       [
@@ -1108,7 +1163,7 @@
     "facility": "assembler"
   },
   {
-    "name": "space wrapper57",
+    "name": "space wrapper61",
     "time": 10,
     "input": [
       [
@@ -1142,7 +1197,7 @@
     "facility": "assembler"
   },
   {
-    "name": "plane filter59",
+    "name": "plane filter63",
     "time": 12,
     "input": [
       [
@@ -1163,7 +1218,7 @@
     "facility": "assembler"
   },
   {
-    "name": "quantum chip60",
+    "name": "quantum chip64",
     "time": 6,
     "input": [
       [
@@ -1184,7 +1239,7 @@
     "facility": "assembler"
   },
   {
-    "name": "logistics vessel61",
+    "name": "logistics vessel65",
     "time": 6,
     "input": [
       [
@@ -1209,7 +1264,7 @@
     "facility": "assembler"
   },
   {
-    "name": "electromagnetic matrix63",
+    "name": "electromagnetic matrix67",
     "time": 3,
     "input": [
       [
@@ -1230,7 +1285,7 @@
     "facility": "research facility"
   },
   {
-    "name": "energy matrix64",
+    "name": "energy matrix68",
     "time": 6,
     "input": [
       [
@@ -1251,7 +1306,7 @@
     "facility": "research facility"
   },
   {
-    "name": "structure matrix65",
+    "name": "structure matrix69",
     "time": 8,
     "input": [
       [
@@ -1272,7 +1327,7 @@
     "facility": "research facility"
   },
   {
-    "name": "information matrix66",
+    "name": "information matrix70",
     "time": 10,
     "input": [
       [
@@ -1293,7 +1348,7 @@
     "facility": "research facility"
   },
   {
-    "name": "gravity matrix67",
+    "name": "gravity matrix71",
     "time": 24,
     "input": [
       [
@@ -1314,7 +1369,7 @@
     "facility": "research facility"
   },
   {
-    "name": "universal matrix68",
+    "name": "universal matrix72",
     "time": 15,
     "input": [
       [
@@ -1351,7 +1406,7 @@
     "facility": "research facility"
   },
   {
-    "name": "solar sail69",
+    "name": "solar sail73",
     "time": 4,
     "input": [
       [
@@ -1372,7 +1427,7 @@
     "facility": "assembler"
   },
   {
-    "name": "frame material70",
+    "name": "frame material74",
     "time": 6,
     "input": [
       [
@@ -1397,7 +1452,7 @@
     "facility": "assembler"
   },
   {
-    "name": "dyson sphere component71",
+    "name": "dyson sphere component75",
     "time": 8,
     "input": [
       [
@@ -1422,7 +1477,7 @@
     "facility": "assembler"
   },
   {
-    "name": "small carrier rocket72",
+    "name": "small carrier rocket76",
     "time": 6,
     "input": [
       [
@@ -1447,7 +1502,7 @@
     "facility": "assembler"
   },
   {
-    "name": "conveyor mkI74",
+    "name": "conveyor belt mk.I78",
     "time": 1,
     "input": [
       [
@@ -1462,7 +1517,157 @@
     "output": [
       [
         3,
-        "conveyor mkI"
+        "conveyor belt mk.I"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "conveyor belt mk.II79",
+    "time": 1,
+    "input": [
+      [
+        3,
+        "conveyor belt mk.I"
+      ],
+      [
+        1,
+        "electromagnetic turbine"
+      ]
+    ],
+    "output": [
+      [
+        3,
+        "conveyor belt mk.II"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "conveyor belt mk.III80",
+    "time": 1,
+    "input": [
+      [
+        3,
+        "conveyor belt mk.II"
+      ],
+      [
+        1,
+        "super-magnetic ring"
+      ],
+      [
+        1,
+        "graphene"
+      ]
+    ],
+    "output": [
+      [
+        3,
+        "conveyor belt mk.III"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "assembling machine mk.I82",
+    "time": 2,
+    "input": [
+      [
+        4,
+        "iron ingot"
+      ],
+      [
+        8,
+        "gear"
+      ],
+      [
+        4,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "assembling machine mk.I"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "assembling machine mk.II83",
+    "time": 3,
+    "input": [
+      [
+        1,
+        "assembling machine mk.I"
+      ],
+      [
+        8,
+        "graphene"
+      ],
+      [
+        4,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "assembling machine mk.II"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "assembling machine mk.III84",
+    "time": 4,
+    "input": [
+      [
+        1,
+        "assembling machine mk.II"
+      ],
+      [
+        8,
+        "particle broadband"
+      ],
+      [
+        2,
+        "quantum chip"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "assembling machine mk.III"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "smelter85",
+    "time": 3,
+    "input": [
+      [
+        4,
+        "iron ingot"
+      ],
+      [
+        2,
+        "stone brick"
+      ],
+      [
+        4,
+        "circuit board"
+      ],
+      [
+        2,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "smelter"
       ]
     ],
     "facility": "assembler"

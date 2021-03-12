@@ -187,20 +187,36 @@
   
 
   {
-    "name" : "assembler mkI",
+    "name" : "assembling machine mk.I",
     "type" : "building",
     "subtype" : "assembler",
     "ratio": 0.75,
-    "slot" : [1,1],
+    "slot" : [4,1],
     "icon" : [11,1]
   },
   {
-    "name" : "assembler mkII",
+    "name" : "assembling machine mk.II",
     "type" : "building",
     "subtype" : "assembler",
     "ratio": 1,
-    "slot" : [1,1],
+    "slot" : [4,2],
     "icon" : [12,1]
+  },
+  {
+    "name" : "assembling machine mk.III",
+    "type" : "building",
+    "subtype" : "assembler",
+    "ratio": 1.5,
+    "slot" : [4,3],
+    "icon" : [13,1]
+  },
+  {
+    "name" : "smelter",
+    "type" : "building",
+    "subtype" : "smelter",
+    "ratio": 1,
+    "slot" : [4,4],
+    "icon" : [4,9]
   }
 
 
