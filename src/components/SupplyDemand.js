@@ -9,6 +9,10 @@ export default class SnD extends React.Component {
   }
 
   render () {
+    console.log(this.props.d)
+    if(!this.props.d.supply.length && !this.props.d.demand.length){
+      return null
+    }
     var listSupply = this.props.d.supply.map(function(a){
       return <Item item={a.item} qty={a.qty} showName={false}></Item>
     })

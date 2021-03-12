@@ -22,6 +22,10 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   if(!qtyDemand) {
     return chain
   }
+
+  if(!itemName || !itemName.length){
+    return chain
+  }
   
   if (depth > 20) {
     return
