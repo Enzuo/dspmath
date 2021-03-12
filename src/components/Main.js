@@ -40,9 +40,10 @@ export default class Main extends React.Component {
       <div>
         <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
         <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
-        {priorityRecipes}
-        <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
-        <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
+        <div className='mb-10'>
+          <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
+          <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
+        </div>
         <div className='flex'>
           <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
           <Planet planet={this.state.selectedPlanet} ></Planet>

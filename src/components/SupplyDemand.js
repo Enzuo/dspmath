@@ -19,17 +19,21 @@ export default class SnD extends React.Component {
     var addToPlanet = this.props.planet ? <Button onClick={this.handleAddToPlanet}>Add SnD to {this.props.planet.name}</Button> : null
 
     return (
-      <div className='io'>
-        <h3>Demand</h3>
-        <ul>
-          {listDemand}
-        </ul>
-        <div className='clearfix'></div>
-        <h3>Supply</h3>
-        <ul>
-          {listSupply}
-        </ul>
-        <div className='clearfix'></div>
+      <div className='io flex'>
+        <div className="mr-6">
+          <h3 className="mr-2">Demand</h3>
+          <ul>
+            {listDemand}
+          </ul>
+          <div className='clearfix'></div>
+        </div>
+        <div>
+          <h3 className="mr-2">Supply</h3>
+          <ul>
+            {listSupply}
+          </ul>
+          <div className='clearfix'></div>
+        </div>
         {addToPlanet}
       </div>
     )
