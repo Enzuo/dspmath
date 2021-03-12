@@ -38,8 +38,13 @@ export default class Main extends React.Component {
     var SnD = DSPMath.getSnDFromChain(productionChain)
     return (
       <div>
-        <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
-        <input value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
+        <div className='flex items-center'>
+          <input className='text-right' value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
+          <div className='m-2'>u/s</div>
+          <div className='flex-1'>
+            <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
+          </div>
+        </div>
         <div className='mb-10'>
           <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
           <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>

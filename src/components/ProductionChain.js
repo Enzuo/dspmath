@@ -14,14 +14,35 @@ class ProductionChain extends React.Component {
 
     var chain = this.props.chain
 
-    const listItem = chain.map((node) => {
+    var currentDepth = 0
+    var sortedChain = chain.sort(function(a, b) {
+      return a.depth - b.depth;
+    });
+
+
+    var depthArr = []
+    for(var i=0; i<sortedChain.length; i++){
+      var node = sortedChain[i]
+      var nodeJSX = <Node node={node} onClick={this.handleNodeClick} onItemClick={this.handleItemClick} onRecipeClick={this.handleRecipeClick} opts={this.props.opts}></Node>
+      if(node.depth !== currentDepth){
+        depthArr.push([nodeJSX])
+        currentDepth = node.depth
+      }
+      else {
+        depthArr[depthArr.length -1].push(nodeJSX)
+      }
+    }
+
+    const listDepthChain = depthArr.map((depthLevel) => {
       return (
-        <Node node={node} onClick={this.handleNodeClick} onItemClick={this.handleItemClick} onRecipeClick={this.handleRecipeClick} opts={this.props.opts}></Node>
+        <div>{depthLevel}</div>
       )
     }
     );
     return (
-      <ul>{listItem}</ul>
+      <ul className='flex'>
+        {listDepthChain}
+      </ul>
     )
   }
 
@@ -53,12 +74,11 @@ function Node (props) {
 
   var node = props.node
 
-  var factories = (
+  var factories = node.nbFactory ? (
     <div>
-      factories required :
-      {formatNumber(node.nbFactory)}
+      {node.nbFactory} {node.factory}
     </div>
-  )
+  ) : null
 
   var items = node.produces.map(p => <Item item={p.item} qty={p.qty} onClick={props.onItemClick}></Item>)
 
@@ -72,7 +92,7 @@ function Node (props) {
   }
 
   return (
-    <div className='node' onClick={(e) => { props.onClick(node) }}>
+    <div className='p-2 m-2 rounded border-solid border-2' onClick={(e) => { props.onClick(node) }}>
       {items}
       {factories}
       {recipes}

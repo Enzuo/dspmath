@@ -212,7 +212,7 @@ function getRecipeForItem (itemName, options) {
 }
 
 function getFactoryForRecipe(recipe) {
-  return {name : 'unknow', ratio : 1}
+  return {name : recipe.facility, ratio : 1}
 }
 
 function mergeProductionChainNodes(chain) {
@@ -307,7 +307,6 @@ function getSnDFromChain(chain){
       }
       return productionArray
     }, [])
-    // TODO remove double on concat
     return arr.concat(production)
   }, [])
 
