@@ -9,7 +9,8 @@ export default class Planets extends React.Component {
     super(props)
 
     this.state = {
-      newName : ''
+      newName : '',
+      imgId : 0
     }
   }
 
@@ -17,13 +18,14 @@ export default class Planets extends React.Component {
     var planets = this.props.d.map((planet) => {
       var selected = this.props.selected ? planet.id === this.props.selected.id : false
       // return (<li key={planet.id} data={planet.id} className={className} onClick={this.handleSelect}>{planet.name}</li>)
-      return <PlanetCard name={planet.name} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
+      return <PlanetCard name={planet.name}imgId={planet.imgId} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
     })
+    var {imgId} = this.state
     return (
       <div className='max-w-md'>
         <h3 className="text-xl">Planets</h3>
         <div className="p-5 flex-auto flex space-x-3">
-          <img className='h-12 w-12' src="/planets/3LXleaA.png" alt="Planet type"></img>
+          <img className='h-12 w-12' src={'/planets/planet-'+imgId+'.png'} alt="Planet type" onClick={this.handleClick}></img>
           <input 
             className='border border-transparent  flex-1 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
             value={this.state.newName} onChange={e => this.setState({ newName : e.target.value})}>
@@ -37,13 +39,27 @@ export default class Planets extends React.Component {
 
   handleAdd = (e) => {
     console.log('add planet')
-    this.props.onPlanetAdd({id: getUid(), name: this.state.newName})
+    this.props.onPlanetAdd({id: getUid(), name: this.state.newName, imgId : this.state.imgId})
   }
 
   handleSelect = (planetId) => {
     // var planetId = parseInt(e.target.getAttribute('data'))
     // console.log('select planet', e.target.getAttribute('data'))
     this.props.onPlanetSelect(planetId)
+  }
+
+  handleClick = (e) => {
+    var modifier = e.getModifierState('Shift')
+    var imgId = modifier ? this.state.imgId - 1 : this.state.imgId + 1
+    if(imgId > 13){
+      imgId = 0
+    }
+    if(imgId < 0){
+      imgId = 13
+    }
+    this.setState({
+      imgId
+    })
   }
 }
 
@@ -54,7 +70,7 @@ function PlanetCard(props){
   return (
     <div className={'p-2 m-0.5 mx-auto bg-white shadow-md flex items-center space-x-4 hover:bg-purple-100 '+className} onClick={(e) => props.onClick(props.id)}>
       <div className="flex-shrink-0">
-        <img className='h-12 w-12' src="/planets/3LXleaA.png" alt="Planet type"></img>
+        <img className='h-12 w-12' src={'/planets/planet-'+props.imgId+'.png'} alt="Planet type"></img>
       </div>
       <div>
         <div className="text-md font-medium text-black">{props.name}</div>
