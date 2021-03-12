@@ -68,7 +68,6 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   if (recipe.input) {
     var qtyMadePerRecipe = recipe.output[itemIndex][0]
     var qtyRecipe = qtyDemand / qtyMadePerRecipe
-
     
     // addFactory
     var factory = getFactoryForRecipe(recipe)
@@ -179,7 +178,6 @@ function getItemDetails(itemName) {
 }
 
 function getRecipeForItem (itemName, options) {
-  var itemIndex
   var allRecipes = RECIPES.filter(function(r){
     // if item is in input for the recipe we don't want to pick this recipe to produce this item (looking at you hydrogen)
     for(var i=0; i < r.input.length; i++) {
@@ -211,6 +209,8 @@ function getRecipeForItem (itemName, options) {
   if(!recipe){
     return {recipe: {name: itemName}}
   }
+
+  var itemIndex = recipe.output.findIndex(a => a[1] === itemName)
 
   return {recipe, itemIndex, allRecipes}
 }
@@ -312,7 +312,7 @@ function getSnDFromChain(chain){
         return qty
       }, 0)
       var qtyUnused = produced.qty - qtyUsed
-      if(qtyUnused){
+      if(qtyUnused > 0){
         productionArray.push({item : clone(produced.item), qty : qtyUnused})
         return productionArray
       }
