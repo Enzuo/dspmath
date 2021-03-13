@@ -11,10 +11,10 @@ export function convert(value ,from, to){
   from = typeof from === 'number' ? UNITS[from] : from
   to = typeof to === 'number' ? UNITS[to] : to
   value = from === 'u/min' ? value / 60 : value
-  value = from === 'u/h' ? value / 360 : value
+  value = from === 'u/h' ? value / 3600 : value
 
   value = to === 'u/min' ? value * 60 : value
-  value = to === 'u/h' ? value * 360 : value
+  value = to === 'u/h' ? value * 3600 : value
   return value
 }
 

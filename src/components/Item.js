@@ -19,7 +19,7 @@ export default class Item extends React.Component {
 
     
     return (
-      <div className="item" onClick={this.handleClick}>
+      <div className="mr-1 ml-1" onClick={this.handleClick}>
         <div>
           <Icon item={item}></Icon>
           <Number>{this.props.qty}</Number>

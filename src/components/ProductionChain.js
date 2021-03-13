@@ -76,7 +76,7 @@ function Node (props) {
   var node = props.node
 
   var factories = node.nbFactory ? (
-    <div>
+    <div className="ml-2">
       {node.nbFactory} <Icon item={node.factory}></Icon>
     </div>
   ) : null
@@ -93,7 +93,7 @@ function Node (props) {
   }
 
   return (
-    <div className='p-2 m-2 rounded border-solid border-2' onClick={(e) => { props.onClick(node) }}>
+    <div className='p-2 m-2 rounded border-solid border-2 flex' onClick={(e) => { props.onClick(node) }}>
       {items}
       {factories}
       {recipes}
@@ -101,11 +101,6 @@ function Node (props) {
     </div>
   )
 }
-
-function formatNumber (nb) {
-  return parseFloat(nb).toFixed(2).replace(/[.,]00$/, "")
-}
-
 
 
 

@@ -9,7 +9,6 @@ export default class SnD extends React.Component {
   }
 
   render () {
-    console.log(this.props.d)
     if(!this.props.d.supply.length && !this.props.d.demand.length){
       return null
     }
@@ -26,14 +25,14 @@ export default class SnD extends React.Component {
       <div className='io flex'>
         <div className="mr-6">
           <h3 className="mr-2">Demand</h3>
-          <ul>
+          <ul className="flex">
             {listDemand}
           </ul>
           <div className='clearfix'></div>
         </div>
         <div>
           <h3 className="mr-2">Supply</h3>
-          <ul>
+          <ul className="flex">
             {listSupply}
           </ul>
           <div className='clearfix'></div>
