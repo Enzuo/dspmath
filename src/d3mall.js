@@ -1,3 +1,4 @@
+// import * as d3 from "d3"
 import * as d3 from "d3"
 import dspMath from "./dspMath"
 
@@ -57,29 +58,18 @@ function renderGraph (svg, data2) {
     .data(data.nodes)
     .enter()
     .append("g")
-    // .append("circle")
-    // .attr("r", 20)
-    // .style("fill", function(d) { return d.type === 'building' ? '#00bbff' : '#003333' })
 
   node.append("circle")
     .attr("r", 20)
     .style("fill", function(d) { return d.type === 'building' ? '#00bbff' : '#003333' })
+    .call(d3.drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
 
-  // var labels = node.append("text")
-  //   .text(function(d) {
-  //     return d.id;
-  //   })
-  //   .attr('x', 6)
-  //   .attr('y', 3);
   node.append("title")
     .text(function(d) { return d.id; });
 
-  // node.append("image")
-  //   .attr("xlink:href", "https://github.com/favicon.ico")
-  //   .attr("x", -12)
-  //   .attr("y", -12)
-  //   .attr("width", 24)
-  //   .attr("height", 24)
   var defs = node.append("defs")
     .append('clipPath')
     .attr("id",d => d.id.replaceAll(' ', ''))
@@ -94,6 +84,7 @@ function renderGraph (svg, data2) {
     .attr("width", 312)
     .attr("height", 288)
     .attr("clip-path",d => 'url(#'+d.id.replaceAll(' ', '')+')')
+    .attr("pointer-events","none")
 
   // Let's list the force we wanna apply on the network
   var simulation = d3.forceSimulation(data.nodes)                 // Force algorithm is applied to data.nodes
@@ -120,10 +111,28 @@ function renderGraph (svg, data2) {
       .attr("transform", function(d) {
         return "translate(" + d.x + "," + d.y + ")";
       })
-    
-    // update()
+  }
+
+  function dragstarted(event, d) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    d.fx = d.x;
+    d.fy = d.y;
+  }
+  
+  function dragged(event, d) {
+    d.fx = event.x;
+    d.fy = event.y;
+  }
+  
+  function dragended(event, d) {
+    if (!event.active) simulation.alphaTarget(0);
+    d.fx = null;
+    d.fy = null;
   }
 }
+
+
+
 
 function iconC(d){
   var x = d.icon ? (d.icon[0]-1) * 24 : 0
