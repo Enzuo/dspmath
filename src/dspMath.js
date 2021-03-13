@@ -347,9 +347,54 @@ function getSnDFromChain(chain){
   return { supply, demand }
 }
 
+function planMall(items){
+  console.log('plan mall with ', items)
+  var recipesList = items.map(i => {
+    return getRecipeForItem(i)
+  })
+
+  var nodes = []
+  nodes = recipesList.reduce((acc, r) => {
+    var {recipe} = r
+    var id = recipe.output[0][1]
+    acc.push({id, type : 'building'})
+    recipe.input.forEach(inp => {
+      if(!acc.find(a => a.id === inp[1])){
+        acc.push({id : inp[1], type : 'element'})
+      }
+    })
+    return acc
+  }, [])
+
+  // Add icons
+  nodes = nodes.map(a => {
+    var item = getItemDetails(a.id)
+    if(item){
+      a.icon = item.icon
+    }
+    return a
+  })
+
+  var links = []
+  links = recipesList.reduce((acc, r) => {
+    var {recipe} = r
+    recipe.input.forEach(inp => {
+      acc.push({ source: recipe.output[0][1] , target: inp[1] })
+    })
+    return acc
+  }, [])
+
+  // var neededItems = recipesList.reduce((acc, d) => {
+  //   return acc.concat(d.recipe.input)
+  // }, [])
+  console.log(nodes)
+  return {nodes , links}
+}
+
 export default {
   getProductionChain,
   toggleRemoteProduceItem,
   togglePriorityRecipe,
   getSnDFromChain,
+  planMall,
 }

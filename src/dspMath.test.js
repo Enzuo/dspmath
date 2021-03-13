@@ -1,3 +1,4 @@
+import dspMath from './dspMath'
 import DSPMath from './dspMath'
 
 
@@ -34,7 +35,7 @@ test('should return the needed factories', () => {
 
 })
 
-test('should test ', () => {
+test.skip('should test ', () => {
   var priorityRecipes = ["Plasma refining"]
   var remoteProducedItems = [
     "dyson sphere component",
@@ -45,4 +46,34 @@ test('should test ', () => {
   var options = { priorityRecipes, remoteProducedItems}
   var chain = DSPMath.getProductionChain('small carrier rocket', 10, options)
   console.log(JSON.stringify(chain, null, 2))
+})
+
+test.only('should plan mall from a list of items', () => {
+  var items = [
+    'tesla tower',
+    'wireless power tower',
+    'satellite substation',
+    'wind turbine',
+    'thermal power station',
+    'solar panel',
+    'conveyor belt mk.I',
+    'conveyor belt mk.II',
+    'conveyor belt mk.III',
+    'splitter',
+    'storage mk.I',
+    'storage mk.II',
+    'storage tank',
+    'sorter mk.I',
+    'sorter mk.II',
+    'sorter mk.III',
+    'mining machine',
+    'water pump',
+    'oil extractor',
+    'oil refinery',
+  ]
+  var plan = dspMath.planMall(items)
+
+
+  console.log(plan)
+
 })

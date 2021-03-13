@@ -350,6 +350,8 @@
   {
     "name" : "water pump",
     "type" : "building",
+    "subtype": "water pump",
+    "ratio": 1,
     "slot" : [3,5],
     "icon" : [3,11]
   },
