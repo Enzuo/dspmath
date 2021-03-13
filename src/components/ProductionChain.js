@@ -5,14 +5,8 @@ import Item from './Item'
 
 
 class ProductionChain extends React.Component {
-  constructor(props){
-    super(props)
-  }
 
   render() {
-
-
-
     var chain = this.props.chain
 
     var currentDepth = 0
@@ -48,23 +42,16 @@ class ProductionChain extends React.Component {
   }
 
   handleNodeClick = (node) => {
-    // var node = e.currentTarget.getAttribute('data')
-    // console.log('click on node', node, e.currentTarget, e.target)
-    console.log('click on node', node)
-    // if(this.props.onNodeClick){
-    //   this.props.onNodeClick(node)
-    // }
+
   }
 
   handleItemClick = (item) => {
-    console.log('click on item', item)
     if(this.props.onRemoveItem){
       this.props.onRemoveItem(item)
     }
   }
 
   handleRecipeClick = (recipe) => {
-    console.log('click on recipe', recipe)
     if(this.props.onPickRecipe){
       this.props.onPickRecipe(recipe)
     }

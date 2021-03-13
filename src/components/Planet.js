@@ -14,7 +14,7 @@ export default class Planet extends React.Component {
         <div className='m-2 p-6 mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4'>
           <div>
             <div className="text-left text-xl font-medium text-black">{d.tower.name}</div>
-            <p className="text-gray-500">{io}</p>
+            <div className="text-gray-500">{io}</div>
           </div>
           
         </div>
@@ -26,9 +26,9 @@ export default class Planet extends React.Component {
         <h3 className='text-xl'>{planet.name}</h3>
         <ul>{towerList}</ul>
         <div className='m-2 p-6 mx-auto bg-white rounded-xl shadow-md flex items-center space-x-4'>
-          <p className="text-gray-500">
+          <div className="text-gray-500">
             <SupplyDemand d={totalSnD}></SupplyDemand>
-          </p>
+          </div>
         </div>
       </div>
     )

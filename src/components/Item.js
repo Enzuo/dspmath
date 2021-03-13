@@ -7,9 +7,6 @@ export default class Item extends React.Component {
   static defaultProps = {
     showName : true
   }
-  constructor(props){
-    super(props)
-  }
 
   render() {
 

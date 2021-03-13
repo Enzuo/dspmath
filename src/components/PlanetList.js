@@ -17,7 +17,6 @@ export default class Planets extends React.Component {
   render () {
     var planets = this.props.d.map((planet) => {
       var selected = this.props.selected ? planet.id === this.props.selected.id : false
-      // return (<li key={planet.id} data={planet.id} className={className} onClick={this.handleSelect}>{planet.name}</li>)
       return <PlanetCard name={planet.name}imgId={planet.imgId} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
     })
     var {imgId} = this.state
@@ -38,13 +37,10 @@ export default class Planets extends React.Component {
   }
 
   handleAdd = (e) => {
-    console.log('add planet')
     this.props.onPlanetAdd({id: getUid(), name: this.state.newName, imgId : this.state.imgId})
   }
 
   handleSelect = (planetId) => {
-    // var planetId = parseInt(e.target.getAttribute('data'))
-    // console.log('select planet', e.target.getAttribute('data'))
     this.props.onPlanetSelect(planetId)
   }
 

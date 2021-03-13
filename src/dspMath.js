@@ -17,7 +17,6 @@ function computeProductionChain(itemName, qtyDemand, options, chain, depth, dema
   depth = depth ? depth + 1 : 1
   var id = ++nodeId
   var remoteProducedItems = options ? options.remoteProducedItems : [];
-  var priorityRecipes = options ? options.priorityRecipes : [];
   
   if(!qtyDemand) {
     return chain
@@ -216,7 +215,6 @@ function getRecipeForItem (itemName, options) {
 }
 
 function getFactoryForRecipe(recipe) {
-  var facility = recipe.facility
   var factory = ITEMS.find(item => {
     return item.subtype === recipe.facility
   })
@@ -273,20 +271,12 @@ function getProductionChain(item, qty, options){
   // console.log("raw production chain", JSON.stringify(filteredChain, null, 2))
 
   var productionChain = mergeProductionChainNodes(rawChain)
-  // var productionChain = addNeededFactories(mergedChain)
   
-  // console.log("merged production chain", productionChain)
+  console.log("merged production chain", productionChain)
   return productionChain
 }
 
 function toggleRemoteProduceItem(array, item){
-
-  // var chainNode = chain.find(function(n){
-  //   if(n.id === item.id){
-  //     return true
-  //   }
-  // })
-  // chainNode.isRemotelyProduced = true;
   var index = array.findIndex(a => a === item.name)
   if(index >= 0){
     array.splice(index, 1)

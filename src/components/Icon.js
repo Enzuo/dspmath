@@ -1,18 +1,13 @@
 import React, { Component } from 'react'
 
 export default class Icon extends Component {
-  // static defaultProps = {}
-
-  // constructor(props){
-  // 	super(props)
-  // }
 
   render() {
     var {item} = this.props
     if(!item.icon){
       return <div>{item.name}</div>
     }
-    
+
     var spriteSize = 24
     var x = item.icon[0] - 1
     var y = item.icon[1] - 1

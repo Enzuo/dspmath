@@ -2,11 +2,6 @@ import React, { Component } from 'react'
 import { OptsContext, getUnit, convert } from './OptsContext'
 
 export default class Number extends Component {
-  // static defaultProps = {}
-
-  // constructor(props){
-  // 	super(props)
-  // }
 
   render() {
     let options = this.context

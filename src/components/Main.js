@@ -85,10 +85,8 @@ export default class Main extends React.Component {
   }
 
   handleNodeClick = (node) => {
-    console.log('click on node', node)
     var item = node.item
     var remoteProducedItems = DSPMath.toggleRemoteProduceItem(this.state.remoteProducedItems, item)
-    console.log('remote produced items : ',remoteProducedItems)
     this.setState({
       remoteProducedItems
     })
