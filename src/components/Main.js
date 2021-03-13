@@ -4,8 +4,7 @@ import ProductionChain from './ProductionChain.js'
 import SupplyDemand from './SupplyDemand.js'
 import Planet from './Planet.js'
 import PlanetList from './PlanetList.js'
-import getUid from 'get-uid'
-
+import {OptsContext, UNITS, convert} from './OptsContext'
 
 import DSPMath from '../dspMath.js'
 
@@ -26,35 +25,48 @@ export default class Main extends React.Component {
       priorityRecipes : [],
       planets : JSON.parse(localStorage.getItem('planets')) || [],
       selectedPlanet : null,
+      unitsIndex : 0,
     }
 
     this.handleSelectChange = this.handleSelectChange.bind(this)
   }
 
   render(){
-    var {remoteProducedItems, priorityRecipes} = this.state
+    var {remoteProducedItems, priorityRecipes, unitsIndex} = this.state
     var opts = {remoteProducedItems, priorityRecipes}
-    var productionChain = DSPMath.getProductionChain(this.state.itemWanted, this.state.qtyWanted, opts)
+    var productionChain = DSPMath.getProductionChain(this.state.itemWanted, convert(this.state.qtyWanted, unitsIndex, 0), opts)
     var SnD = DSPMath.getSnDFromChain(productionChain)
     return (
       <div>
-        <div className='flex items-center'>
-          <input className='text-right' value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
-          <div className='m-2'>u/s</div>
-          <div className='flex-1'>
-            <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
+        <OptsContext.Provider value={{unitsIndex}}>
+          <div className='flex items-center'>
+            <input className='text-right' value={this.state.qtyWanted} onChange={this.handleQtyWantedChange}></input>
+            <div className='m-2 cursor-pointer' onClick={this.handleUnitChange}>{UNITS[this.state.unitsIndex]}</div>
+            <div className='flex-1'>
+              <ItemSelect items={this.state.items} onChange={this.handleSelectChange}></ItemSelect>
+            </div>
           </div>
-        </div>
-        <div className='mb-10'>
-          <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
-          <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
-        </div>
-        <div className='flex'>
-          <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
-          <Planet planet={this.state.selectedPlanet} ></Planet>
-        </div>
+          <div className='mb-10'>
+            <ProductionChain chain={productionChain} onNodeClick={this.handleNodeClick} onRemoveItem={this.handleRemoveItem} onPickRecipe={this.handlePickRecipe} opts={opts}></ProductionChain>
+            <SupplyDemand d={SnD} onAdd={this.handleAddSnD} planet={this.state.selectedPlanet}></SupplyDemand>
+          </div>
+          <div className='flex'>
+            <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
+            <Planet planet={this.state.selectedPlanet} ></Planet>
+          </div>
+        </OptsContext.Provider>
       </div>
     )
+  }
+
+  handleUnitChange = (e) => {
+    var {unitsIndex, qtyWanted} = this.state
+    var newUnitIndex = unitsIndex + 1 >= UNITS.length ? 0 : unitsIndex + 1
+    qtyWanted = convert(qtyWanted, unitsIndex, newUnitIndex)
+    this.setState({
+      unitsIndex : newUnitIndex,
+      qtyWanted
+    })
   }
 
   handleSelectChange(item){

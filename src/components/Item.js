@@ -1,5 +1,6 @@
 import React from 'react'
 import Icon from './Icon'
+import Number from './Number'
 
 
 export default class Item extends React.Component {
@@ -21,9 +22,7 @@ export default class Item extends React.Component {
       <div className="item" onClick={this.handleClick}>
         <div>
           <Icon item={item}></Icon>
-          <div title='u/s'>
-            {this.props.qty}
-          </div>
+          <Number>{this.props.qty}</Number>
         </div>
 
         {name}
