@@ -1502,7 +1502,315 @@
     "facility": "assembler"
   },
   {
-    "name": "conveyor belt mk.I78",
+    "name": "tesla tower78",
+    "time": 1,
+    "input": [
+      [
+        2,
+        "iron ingot"
+      ],
+      [
+        1,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "tesla tower"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "wireless power tower79",
+    "time": 3,
+    "input": [
+      [
+        1,
+        "tesla tower"
+      ],
+      [
+        3,
+        "plasma exciter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "wireless power tower"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "satellite substation80",
+    "time": 5,
+    "input": [
+      [
+        1,
+        "wireless power tower"
+      ],
+      [
+        10,
+        "super-magnetic ring"
+      ],
+      [
+        2,
+        "frame material"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "satellite substation"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "wind turbine81",
+    "time": 4,
+    "input": [
+      [
+        6,
+        "iron ingot"
+      ],
+      [
+        1,
+        "gear"
+      ],
+      [
+        3,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "wind turbine"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "thermal power station82",
+    "time": 5,
+    "input": [
+      [
+        10,
+        "iron ingot"
+      ],
+      [
+        4,
+        "stone brick"
+      ],
+      [
+        4,
+        "gear"
+      ],
+      [
+        4,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "thermal power station"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "solar panel83",
+    "time": 5,
+    "input": [
+      [
+        6,
+        "copper ingot"
+      ],
+      [
+        6,
+        "high-purity silicon"
+      ],
+      [
+        4,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "solar panel"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "accumulator84",
+    "time": 5,
+    "input": [
+      [
+        6,
+        "iron ingot"
+      ],
+      [
+        6,
+        "super-magnetic ring"
+      ],
+      [
+        4,
+        "crystal silicon"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "accumulator"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "full accumulator85",
+    "time": 2,
+    "input": [
+      [
+        1,
+        "accumulator"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "full accumulator"
+      ]
+    ],
+    "facility": "energy exchanger"
+  },
+  {
+    "name": "ray receiver86",
+    "time": 8,
+    "input": [
+      [
+        20,
+        "steel"
+      ],
+      [
+        20,
+        "high-purity silicon"
+      ],
+      [
+        10,
+        "photon combiner"
+      ],
+      [
+        5,
+        "processor"
+      ],
+      [
+        20,
+        "super-magnetic ring"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "ray receiver"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "mini fusion power station87",
+    "time": 10,
+    "input": [
+      [
+        12,
+        "titanium alloy"
+      ],
+      [
+        10,
+        "super-magnetic ring"
+      ],
+      [
+        8,
+        "carbon nanotube"
+      ],
+      [
+        4,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "mini fusion power station"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "energy exchanger88",
+    "time": 15,
+    "input": [
+      [
+        40,
+        "titanium alloy"
+      ],
+      [
+        40,
+        "steel"
+      ],
+      [
+        40,
+        "processor"
+      ],
+      [
+        8,
+        "particle container"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "energy exchanger"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "artificial star89",
+    "time": 30,
+    "input": [
+      [
+        20,
+        "titanium alloy"
+      ],
+      [
+        20,
+        "frame material"
+      ],
+      [
+        10,
+        "annihilation constraint sphere"
+      ],
+      [
+        10,
+        "quantum chip"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "artificial star"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "conveyor belt mk.I91",
     "time": 1,
     "input": [
       [
@@ -1523,7 +1831,7 @@
     "facility": "assembler"
   },
   {
-    "name": "conveyor belt mk.II79",
+    "name": "conveyor belt mk.II92",
     "time": 1,
     "input": [
       [
@@ -1544,7 +1852,7 @@
     "facility": "assembler"
   },
   {
-    "name": "conveyor belt mk.III80",
+    "name": "conveyor belt mk.III93",
     "time": 1,
     "input": [
       [
@@ -1569,7 +1877,423 @@
     "facility": "assembler"
   },
   {
-    "name": "assembling machine mk.I82",
+    "name": "splitter94",
+    "time": 2,
+    "input": [
+      [
+        3,
+        "iron ingot"
+      ],
+      [
+        2,
+        "gear"
+      ],
+      [
+        1,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "splitter"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "storage mk.I95",
+    "time": 2,
+    "input": [
+      [
+        4,
+        "iron ingot"
+      ],
+      [
+        4,
+        "stone brick"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "storage mk.I"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "storage mk.II96",
+    "time": 4,
+    "input": [
+      [
+        8,
+        "steel"
+      ],
+      [
+        8,
+        "stone brick"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "storage mk.II"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "storage tank97",
+    "time": 2,
+    "input": [
+      [
+        8,
+        "iron ingot"
+      ],
+      [
+        4,
+        "stone brick"
+      ],
+      [
+        4,
+        "glass"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "storage tank"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "em-rail ejector98",
+    "time": 6,
+    "input": [
+      [
+        20,
+        "steel"
+      ],
+      [
+        20,
+        "gear"
+      ],
+      [
+        5,
+        "processor"
+      ],
+      [
+        10,
+        "super-magnetic ring"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "em-rail ejector"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "planetary logistics station99",
+    "time": 20,
+    "input": [
+      [
+        40,
+        "steel"
+      ],
+      [
+        40,
+        "titanium ingot"
+      ],
+      [
+        40,
+        "processor"
+      ],
+      [
+        20,
+        "particle container"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "planetary logistics station"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "miniature particle collider100",
+    "time": 15,
+    "input": [
+      [
+        20,
+        "titanium alloy"
+      ],
+      [
+        20,
+        "frame material"
+      ],
+      [
+        50,
+        "super-magnetic ring"
+      ],
+      [
+        10,
+        "graphene"
+      ],
+      [
+        8,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "miniature particle collider"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "sorter mk.I102",
+    "time": 1,
+    "input": [
+      [
+        1,
+        "iron ingot"
+      ],
+      [
+        1,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "sorter mk.I"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "sorter mk.II103",
+    "time": 1,
+    "input": [
+      [
+        2,
+        "sorter mk.I"
+      ],
+      [
+        1,
+        "electric motor"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "sorter mk.II"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "sorter mk.III104",
+    "time": 1,
+    "input": [
+      [
+        2,
+        "sorter mk.II"
+      ],
+      [
+        1,
+        "electromagnetic turbine"
+      ]
+    ],
+    "output": [
+      [
+        2,
+        "sorter mk.III"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "mining machine105",
+    "time": 3,
+    "input": [
+      [
+        4,
+        "iron ingot"
+      ],
+      [
+        2,
+        "circuit board"
+      ],
+      [
+        2,
+        "magnetic coil"
+      ],
+      [
+        2,
+        "gear"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "mining machine"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "water pump106",
+    "time": 4,
+    "input": [
+      [
+        8,
+        "iron ingot"
+      ],
+      [
+        4,
+        "stone brick"
+      ],
+      [
+        4,
+        "electric motor"
+      ],
+      [
+        2,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "water pump"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "oil extractor107",
+    "time": 8,
+    "input": [
+      [
+        12,
+        "steel"
+      ],
+      [
+        12,
+        "stone brick"
+      ],
+      [
+        6,
+        "circuit board"
+      ],
+      [
+        4,
+        "plasma exciter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "oil extractor"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "oil refinery108",
+    "time": 6,
+    "input": [
+      [
+        10,
+        "steel"
+      ],
+      [
+        10,
+        "stone brick"
+      ],
+      [
+        6,
+        "circuit board"
+      ],
+      [
+        6,
+        "plasma exciter"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "oil refinery"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "vertical launching silo109",
+    "time": 30,
+    "input": [
+      [
+        80,
+        "titanium alloy"
+      ],
+      [
+        30,
+        "frame material"
+      ],
+      [
+        20,
+        "graviton lens"
+      ],
+      [
+        10,
+        "quantum chip"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "vertical launching silo"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "interstellar logistics station110",
+    "time": 30,
+    "input": [
+      [
+        1,
+        "planetary logistics station"
+      ],
+      [
+        50,
+        "titanium alloy"
+      ],
+      [
+        20,
+        "particle container"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "interstellar logistics station"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "assembling machine mk.I112",
     "time": 2,
     "input": [
       [
@@ -1594,7 +2318,7 @@
     "facility": "assembler"
   },
   {
-    "name": "assembling machine mk.II83",
+    "name": "assembling machine mk.II113",
     "time": 3,
     "input": [
       [
@@ -1619,7 +2343,7 @@
     "facility": "assembler"
   },
   {
-    "name": "assembling machine mk.III84",
+    "name": "assembling machine mk.III114",
     "time": 4,
     "input": [
       [
@@ -1644,7 +2368,7 @@
     "facility": "assembler"
   },
   {
-    "name": "smelter85",
+    "name": "smelter115",
     "time": 3,
     "input": [
       [
@@ -1668,6 +2392,122 @@
       [
         1,
         "smelter"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "fractionator116",
+    "time": 3,
+    "input": [
+      [
+        8,
+        "steel"
+      ],
+      [
+        4,
+        "stone brick"
+      ],
+      [
+        4,
+        "glass"
+      ],
+      [
+        1,
+        "processor"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "fractionator"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "chemical plant117",
+    "time": 5,
+    "input": [
+      [
+        8,
+        "steel"
+      ],
+      [
+        8,
+        "stone brick"
+      ],
+      [
+        8,
+        "glass"
+      ],
+      [
+        2,
+        "circuit board"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "chemical plant"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "matrix lab118",
+    "time": 3,
+    "input": [
+      [
+        8,
+        "iron ingot"
+      ],
+      [
+        4,
+        "glass"
+      ],
+      [
+        4,
+        "circuit board"
+      ],
+      [
+        4,
+        "magnetic coil"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "matrix lab"
+      ]
+    ],
+    "facility": "assembler"
+  },
+  {
+    "name": "orbital collector119",
+    "time": 30,
+    "input": [
+      [
+        1,
+        "interstellar logistics station"
+      ],
+      [
+        50,
+        "super-magnetic ring"
+      ],
+      [
+        20,
+        "reinforced thruster"
+      ],
+      [
+        20,
+        "full accumulator"
+      ]
+    ],
+    "output": [
+      [
+        1,
+        "orbital collector"
       ]
     ],
     "facility": "assembler"
