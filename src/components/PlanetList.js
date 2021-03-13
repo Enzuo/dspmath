@@ -25,7 +25,7 @@ export default class Planets extends React.Component {
       <div className='max-w-md'>
         <h3 className="text-xl">Planets</h3>
         <div className="p-5 flex-auto flex space-x-3">
-          <img className='h-12 w-12' src={'/planets/planet-'+imgId+'.png'} alt="Planet type" onClick={this.handleClick}></img>
+          <img className='h-12 w-12 cursor-pointer' src={'/planets/planet-'+imgId+'.png'} alt="Planet type" onClick={this.handleClick} title='shift + click to go back'></img>
           <input 
             className='border border-transparent  flex-1 shadow-md focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent'
             value={this.state.newName} onChange={e => this.setState({ newName : e.target.value})}>
@@ -68,7 +68,7 @@ function PlanetCard(props){
   var selectedClass = 'bg-purple-50'
   var className = props.selected ? selectedClass : null
   return (
-    <div className={'p-2 m-0.5 mx-auto bg-white shadow-md flex items-center space-x-4 hover:bg-purple-100 '+className} onClick={(e) => props.onClick(props.id)}>
+    <div className={'p-2 m-0.5 mx-auto bg-white cursor-pointer shadow-md flex items-center space-x-4 hover:bg-purple-100 '+className} onClick={(e) => props.onClick(props.id)}>
       <div className="flex-shrink-0">
         <img className='h-12 w-12' src={'/planets/planet-'+props.imgId+'.png'} alt="Planet type"></img>
       </div>

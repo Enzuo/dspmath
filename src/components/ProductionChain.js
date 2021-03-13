@@ -81,7 +81,7 @@ function Node (props) {
     </div>
   ) : null
 
-  var items = node.produces.map(p => <Item item={p.item} qty={p.qty} onClick={props.onItemClick}></Item>)
+  var items = node.produces.map(p => <div className='cursor-pointer'><Item item={p.item} qty={p.qty} onClick={props.onItemClick}></Item></div>)
 
   var recipes
   if (node.allRecipes && node.allRecipes.length > 1){
