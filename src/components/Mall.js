@@ -45,10 +45,10 @@ class ItemPanel extends Component {
   render () {
 
     var items
-    var baseSize = 24
+    var baseSize = 48
     var padding = 4
     var colNum = 12
-    var rowNum = 8
+    var rowNum = 7
     var height = rowNum*(baseSize + padding)
     var width = colNum*(baseSize + padding)
 
@@ -70,7 +70,7 @@ class ItemPanel extends Component {
       }
       return (
         <div className={"absolute border border-black cursor-pointer hover:border-purple-500 "+ selectedClass} style={{top:posY, left:posX}} onClick={e => {this.handleClick(i)}}>
-          <Icon item={i}></Icon>
+          <Icon item={i} size={baseSize}></Icon>
         </div>
       )
     })

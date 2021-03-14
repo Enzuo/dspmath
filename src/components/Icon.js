@@ -3,18 +3,19 @@ import React, { Component } from 'react'
 export default class Icon extends Component {
 
   render() {
-    var {item} = this.props
+    var {item, size} = this.props
+    size = size || 24
     if(!item.icon){
       return <div>{item.name}</div>
     }
 
-    var spriteSize = 24
+    var spriteSize = size
     var x = item.icon[0] - 1
     var y = item.icon[1] - 1
     var left = x * spriteSize
     var top = y * spriteSize
     var iconStyle = {
-      backgroundImage : 'url(icons-24.png)',
+      backgroundImage : 'url(icons-'+size+'.png)',
       backgroundPosition : 'left -'+left+'px top -'+top+'px',
       height: spriteSize +'px',
       width: spriteSize +'px'
