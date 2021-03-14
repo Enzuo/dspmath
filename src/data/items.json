@@ -18,10 +18,28 @@
     "icon" : [13,9]
   },
   {
+    "name": "coal",
+    "type" : "ore",
+    "slot" : [1,4],
+    "icon" : [11,2]
+  },
+  {
+    "name": "silicon ore",
+    "type" : "ore",
+    "slot" : [1,5],
+    "icon" : [2,9]
+  },
+  {
     "name": "titanium ore",
     "type" : "ore",
     "slot" : [1,6],
     "icon" : [12,10]
+  },
+  {
+    "name": "water",
+    "type" : "material",
+    "slot" : [1,7],
+    "icon" : [4,11]
   },
   {
     "name": "crude oil",
@@ -34,6 +52,24 @@
     "type": "material",
     "slot": [1,9],
     "icon": [7,5]
+  },
+  {
+    "name": "deuterium",
+    "type": "material",
+    "slot": [1,10],
+    "icon": [5,3]
+  },
+  {
+    "name": "antimatter",
+    "type": "material",
+    "slot": [1,11],
+    "icon": [9,1]
+  },
+  {
+    "name": "kimberlite ore",
+    "type": "ore",
+    "slot": [1,12],
+    "icon": [7,3]
   },
 
   {
@@ -85,14 +121,30 @@
     "slot": [2,8],
     "icon": [11,8]
   },
-
-
   {
-    "name": "gear",
-    "type" : "component",
-    "icon" : [11,4]
+    "name": "hydrogen fuel rod",
+    "type": "material",
+    "slot": [2,9],
+    "icon": [6,5]
   },
-
+  {
+    "name": "deuteron fuel rod",
+    "type": "material",
+    "slot": [2,10],
+    "icon": [3,3]
+  },
+  {
+    "name": "antimatter fuel rod",
+    "type": "material",
+    "slot": [2,11],
+    "icon": [10,1]
+  },
+  {
+    "name": "fractal silicon",
+    "type": "ore",
+    "slot": [2,12],
+    "icon": [1,4]
+  },
 
   {
     "name": "magnet",
@@ -103,25 +155,260 @@
   {
     "name": "magnetic coil",
     "type": "component",
-    "slot":[3,2],
+    "slot": [3,2],
     "icon": [10,6]
   },
   {
+    "name": "glass",
+    "type" : "material",
+    "slot" : [3,3],
+    "icon" : [12,4]
+  },
+  {
+    "name": "diamond",
+    "type" : "material",
+    "slot" : [3,4],
+    "icon" : [8,3]
+  },
+  {
+    "name": "crystal silicon",
+    "type" : "material",
+    "slot" : [3,5],
+    "icon" : [1,9]
+  },
+  {
     "name": "titanium alloy",
-    "type": "component",
-    "slot":[3,6],
+    "type": "material",
+    "slot": [3,6],
     "icon": [11,10]
   },
+  {
+    "name": "fire ice",
+    "type": "ore",
+    "slot": [3,7],
+    "icon": [10,4]
+  },
+  {
+    "name": "plastic",
+    "type": "material",
+    "slot": [3,8],
+    "icon": [6,8]
+  },
+  {
+    "name": "organic crystal",
+    "type": "material",
+    "slot": [3,9],
+    "icon": [2,3]
+  },
+  {
+    "name": "graphene",
+    "type": "material",
+    "slot": [3,10],
+    "icon": [1,5]
+  },
+  {
+    "name": "thruster",
+    "type": "component",
+    "slot": [3,11],
+    "icon": [5,4]
+  },
+  {
+    "name": "optical grating crystal",
+    "type": "ore",
+    "slot": [3,12],
+    "icon": [3,5]
+  },
 
+  {
+    "name": "steel",
+    "type": "material",
+    "slot": [4,1],
+    "icon": [11,9]
+  },
+  {
+    "name": "circuit board",
+    "type": "component",
+    "slot": [4,2],
+    "icon": [10,2]
+  },
+  {
+    "name": "prism",
+    "type": "component",
+    "slot": [4,3],
+    "icon": [7,8]
+  },
   {
     "name": "electric motor",
     "type": "component",
     "slot": [4,4],
     "icon": [11,3]
   },
+  {
+    "name": "microcrystalline component",
+    "type": "component",
+    "slot": [4,5],
+    "icon": [11,6]
+  },
+  {
+    "name": "casimir crystal",
+    "type": "component",
+    "slot": [4,7],
+    "icon": [7,2]
+  },
+  {
+    "name": "stranger matter",
+    "type": "component",
+    "slot": [4,8],
+    "icon": [4,10]
+  },
+  {
+    "name": "titanium crystal",
+    "type": "material",
+    "slot": [4,9],
+    "icon": [9,10]
+  },
+  {
+    "name": "carbon nanotube",
+    "type": "material",
+    "slot": [4,10],
+    "icon": [2,7]
+  },
+  {
+    "name": "reinforced thruster",
+    "type": "component",
+    "slot": [4,11],
+    "icon": [1,6]
+  },
+  {
+    "name": "spiniform stalagmite crystal",
+    "type": "ore",
+    "slot": [4,12],
+    "icon": [1,2]
+  },
 
 
+  {
+    "name": "gear",
+    "type" : "component",
+    "slot" : [5,1],
+    "icon" : [11,4]
+  },
+  {
+    "name": "plasma exciter",
+    "type" : "component",
+    "slot" : [5,2],
+    "icon" : [4,8]
+  },
+  {
+    "name": "photon combiner",
+    "type" : "component",
+    "slot" : [5,3],
+    "icon" : [12,7]
+  },
+  {
+    "name": "electromagnetic turbine",
+    "type" : "component",
+    "slot" : [5,4],
+    "icon" : [8,6]
+  },
+  {
+    "name": "processor",
+    "type" : "component",
+    "slot" : [5,5],
+    "icon" : [8,8]
+  },
+  {
+    "name": "annihilation constraint sphere",
+    "type" : "material",
+    "slot" : [5,8],
+    "icon" : [6,4]
+  },
+  {
+    "name": "titanium glass",
+    "type" : "material",
+    "slot" : [5,9],
+    "icon" : [10,10]
+  },
+  {
+    "name": "particle broadband",
+    "type" : "material",
+    "slot" : [5,10],
+    "icon" : [10,7]
+  },
+  {
+    "name": "logistics drone",
+    "type" : "component",
+    "slot" : [5,11],
+    "icon" : [5,6]
+  },
+  {
+    "name": "unipolar magnet",
+    "type" : "ore",
+    "slot" : [5,12],
+    "icon" : [13,6]
+  },
 
+  {
+    "name": "foundation",
+    "type" : "component",
+    "slot" : [6,1],
+    "icon" : [7,10]
+  },
+  {
+    "name": "critical photon",
+    "type" : "material",
+    "slot" : [6,2],
+    "icon" : [13,7]
+  },
+  {
+    "name": "particle container",
+    "type" : "component",
+    "slot" : [6,3],
+    "icon" : [9,7]
+  },
+  {
+    "name": "super-magnetic ring",
+    "type" : "component",
+    "slot" : [6,4],
+    "icon" : [8,5]
+  },
+  {
+    "name": "graviton lens",
+    "type" : "component",
+    "slot" : [6,5],
+    "icon" : [4,5]
+  },
+  {
+    "name": "space wrapper",
+    "type" : "component",
+    "slot" : [6,8],
+    "icon" : [8,9]
+  },
+  {
+    "name": "plane filter",
+    "type" : "component",
+    "slot" : [6,9],
+    "icon" : [2,8]
+  },
+  {
+    "name": "quantum chip",
+    "type" : "component",
+    "slot" : [6,10],
+    "icon" : [9,8]
+  },
+  {
+    "name": "logistics vessel",
+    "type" : "component",
+    "slot" : [6,11],
+    "icon" : [7,6]
+  },
+  {
+    "name": "log",
+    "type" : "material",
+    "slot" : [6,12],
+    "icon" : [6,11]
+  },
+  
 
   {
     "name": "electromagnetic matrix",
@@ -182,6 +469,12 @@
     "type": "component",
     "slot": [7,11],
     "icon": [12,8]
+  },
+  {
+    "name": "planet fuel",
+    "type": "material",
+    "slot": [7,12],
+    "icon": [3,8]
   },
 
   
