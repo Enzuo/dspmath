@@ -1,35 +1,6 @@
-// import * as d3 from "d3"
 import * as d3 from "d3"
-import dspMath from "./dspMath"
 
-// import data from './data/dataGraph.json'
-var items = [
-  'tesla tower',
-  'wireless power tower',
-  'satellite substation',
-  'wind turbine',
-  'thermal power station',
-  'solar panel',
-  'conveyor belt mk.I',
-  'conveyor belt mk.II',
-  'conveyor belt mk.III',
-  'splitter',
-  'storage mk.I',
-  'storage mk.II',
-  'storage tank',
-  'sorter mk.I',
-  'sorter mk.II',
-  'sorter mk.III',
-  'mining machine',
-  'water pump',
-  'oil extractor',
-  'oil refinery',
-]
-
-var data = dspMath.planMall(items)
-
-
-function renderGraph (svg, data2) {
+function renderGraph (svg, data) {
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
@@ -46,7 +17,7 @@ function renderGraph (svg, data2) {
   // Init force simulation
   const simulation = d3.forceSimulation(data.nodes)
     .force("link", d3.forceLink(data.links).id(d => d.id))
-    .force("charge", d3.forceManyBody().strength(-200))
+    .force("charge", d3.forceManyBody().strength(-200).distanceMin(10))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
   // Initialize the links
