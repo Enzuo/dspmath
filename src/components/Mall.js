@@ -69,7 +69,7 @@ class ItemPanel extends Component {
         posY = (i.slot[0]-1) * (baseSize + padding )
       }
       return (
-        <div className={"absolute border border-black cursor-pointer hover:bg-purple-500 "+ selectedClass} style={{top:posY, left:posX}} onClick={e => {this.handleClick(i)}}>
+        <div className={"absolute border border-black cursor-pointer hover:border-purple-500 "+ selectedClass} style={{top:posY, left:posX}} onClick={e => {this.handleClick(i)}}>
           <Icon item={i}></Icon>
         </div>
       )

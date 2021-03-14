@@ -1,6 +1,9 @@
 import * as d3 from "d3"
 
 function renderGraph (svg, data) {
+  svg.selectAll("g > *").remove()
+  svg.selectAll("line").remove()
+  
   // set the dimensions and margins of the graph
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
     width = 800 - margin.left - margin.right,
@@ -18,7 +21,8 @@ function renderGraph (svg, data) {
   const simulation = d3.forceSimulation(data.nodes)
     .force("link", d3.forceLink(data.links).id(d => d.id))
     .force("charge", d3.forceManyBody().strength(-200).distanceMin(10))
-    .force("center", d3.forceCenter(width / 2, height / 2));
+    .force("center", d3.forceCenter(width / 2, height / 2))
+    .restart()
 
   // Initialize the links
   var link = svg
