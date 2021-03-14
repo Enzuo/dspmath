@@ -276,7 +276,7 @@ function getProductionChain(item, qty, options){
   return productionChain
 }
 
-function toggleRemoteProduceItem(array, item){
+function toggleItem(array, item){
   var index = array.findIndex(a => a === item.name)
   if(index >= 0){
     array.splice(index, 1)
@@ -287,7 +287,7 @@ function toggleRemoteProduceItem(array, item){
 }
 
 function togglePriorityRecipe(array, recipe){
-  return toggleRemoteProduceItem(array, recipe)
+  return toggleItem(array, recipe)
 }
 
 function getSnDFromChain(chain){
@@ -348,7 +348,6 @@ function getSnDFromChain(chain){
 }
 
 function planMall(items){
-  console.log('plan mall with ', items)
   var recipesList = items.map(i => {
     return getRecipeForItem(i)
   })
@@ -393,7 +392,8 @@ function planMall(items){
 
 export default {
   getProductionChain,
-  toggleRemoteProduceItem,
+  toggleItem,
+  toggleRemoteProduceItem : toggleItem,
   togglePriorityRecipe,
   getSnDFromChain,
   planMall,

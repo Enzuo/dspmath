@@ -18,7 +18,7 @@ export default function MallGraph({ data }) {
   const ref = useD3(
     d3mall.renderGraph,
     data,
-    [data.length],
+    [data.nodes.length],
   );
 
   return (

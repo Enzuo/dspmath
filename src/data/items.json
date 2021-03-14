@@ -275,7 +275,7 @@
   {
     "name" : "conveyor belt mk.III",
     "type" : "building",
-    "slot" : [2,4],
+    "slot" : [2,3],
     "icon" : [4,2]
   },
   {
