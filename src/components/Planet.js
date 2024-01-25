@@ -16,7 +16,7 @@ export default class Planet extends React.Component {
             <div className="text-left text-xl font-medium text-black">{d.tower.name}</div>
             <div className="text-gray-500">{io}</div>
           </div>
-          
+          <div className="cursor-pointer" onClick={this.props.onDeleteTower(d.tower.id)} >X</div>
         </div>
       )
     })

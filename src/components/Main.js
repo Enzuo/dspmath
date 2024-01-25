@@ -54,7 +54,7 @@ export default class Main extends React.Component {
           </div>
           <div className='flex'>
             <PlanetList d={this.state.planets} selected={this.state.selectedPlanet} onPlanetAdd={this.handlePlanetAdd} onPlanetSelect={this.handlePlanetSelect}></PlanetList>
-            <Planet planet={this.state.selectedPlanet} ></Planet>
+            <Planet planet={this.state.selectedPlanet} onDeleteTower={this.handleDeleteTower}></Planet>
           </div>
         </OptsContext.Provider>
       </div>
@@ -147,5 +147,13 @@ export default class Main extends React.Component {
     var planets = this.state.planets
     this.setState({ planets })
     localStorage.setItem('planets', JSON.stringify(planets))
+  }
+
+  handleDeleteTower = (idTower) => {
+    console.log(idTower)
+    var { selectedPlanet } = this.state
+    var index = selectedPlanet.SnD.findIndex(t => t.tower.id === idTower)
+    
+
   }
 }

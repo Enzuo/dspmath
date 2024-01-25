@@ -17,7 +17,7 @@ export default class Planets extends React.Component {
   render () {
     var planets = this.props.d.map((planet) => {
       var selected = this.props.selected ? planet.id === this.props.selected.id : false
-      return <PlanetCard name={planet.name}imgId={planet.imgId} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
+      return <PlanetCard name={planet.name} imgId={planet.imgId} selected={selected} onClick={this.handleSelect} key={planet.id} id={planet.id}></PlanetCard>
     })
     var {imgId} = this.state
     return (
